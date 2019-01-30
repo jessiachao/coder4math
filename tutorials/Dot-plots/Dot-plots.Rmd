@@ -1,0 +1,197 @@
+---
+title: "Creating dot plots in R"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## What is a dot plot?
+
+
+*"**Line plot**. A method of visually displaying a distribution of data values where each data value is shown as a dot or mark above a number line. Also known as a **dot plot**"*  --- Common Core Mathematics Standards
+
+Let's create a dot plot for the data set below:
+
+<center>
+4, 2, 2, 5, 2, 1, 3, 2, 4, 3,   
+4, 3, 1, 1, 4, 3, 5, 2, 4, 4,   
+2, 1, 3, 5, 2, 4, 4, 4, 2, 4,   
+3, 2, 4, 4, 2, 2, 1, 3, 1, 5,   
+4, 5, 5, 5, 3, 2, 3, 4, 1, 5
+</center>
+
+<br>
+
+**1. Sort the data**  
+<center>
+1, 1, 1, 1, 1, 1, 1,   
+2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   
+3, 3, 3, 3, 3, 3, 3, 3, 3,   
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   
+5, 5, 5, 5, 5, 5, 5, 5
+</center>
+<br>
+
+**2. Count each value**
+```{r}
+Values = c(4, 2, 2, 5, 2, 1, 3, 2, 4, 3, 4, 3, 1, 1, 4, 3, 5, 2, 4, 4, 2, 1, 3, 5, 2, 4, 4, 4, 2, 4, 3, 2, 4, 4, 2, 2, 1, 3, 1, 5, 4, 5, 5, 5, 3, 2, 3, 4, 1, 5)
+t = as.data.frame(table(Values))
+knitr::kable(t, align = "c")
+```
+<br>
+
+**3. Draw a number line and plot based on the frequency table**
+```{r echo=FALSE}
+### Visualize data on a single variable
+
+## Create a variable `x` to store a set of numeric values
+x = c(4, 2, 2, 5, 2, 1, 3, 2, 4, 3, 4, 3, 1, 1, 4, 3, 5, 2, 4, 4, 2, 1, 3, 5, 2, 4, 4, 4, 2, 4, 3, 2, 4, 4, 2, 2, 1, 3, 1, 5, 4, 5, 5, 5, 3, 2, 3, 4, 1, 5)  # `c()` combines values inside the parentheses into a vector; `=` assignment operator assign the vector to variable `x`
+                                   
+## Create a dot plot for the values in variable `x`
+stripchart(              # Call the `stripchart()` function.
+  x,                     # Apply the function to variable `x`.
+  method = "stack",      # Stack up points of the same value.
+  frame.plot = FALSE,    # Remove the plot frame.
+  at = 0,                # Position the points at the bottom.
+  offset = 0.5,          # Separate stacking points by 0.5 of point size. TRY 1 or 2.
+  pch = 16,              # Set point symbol as 16-solid circle. TRY 0-square or 8-star.
+  col = "black",   # Set point color as deepskyblue. TRY "forestgreen" or "deeppink".
+  main = "My dot plot",  # Create a plot title. TRY your own title. 
+  xlab = "Values")       # Label the x-axis. TRY your own label.
+```
+
+[CCSS.MATH.CONTENT.6.SP.B.4](http://www.corestandards.org/Math/Content/6/SP/B/4/)  
+Display numerical data in plots on a number line, including dot plots, histograms, and box plots.
+
+[CCSS.MATH.CONTENT.HSS.ID.A.1](http://www.corestandards.org/Math/Content/HSS/ID/A/1/)  
+Represent data with plots on the real number line (dot plots, histograms, and box plots).
+
+## Basic dot plots
+```{r basic, echo=TRUE, exercise=TRUE}
+## Create a variable `x` to store a set of numeric values
+x = c(4, 2, 2, 5, 2, 1, 3, 2, 4, 3, 4, 3, 1, 1, 4, 3, 5, 2, 4, 4, 2, 1, 3, 5, 2, 4, 4, 4, 2, 4, 3, 2, 4, 4, 2, 2, 1, 3, 1, 5, 4, 5, 5, 5, 3, 2, 3, 4, 1, 5)
+## Create a dot plot for the values in variable `x`
+stripchart(              # Call the `stripchart()` function.
+  x,                     # Apply the function to variable `x`.
+  method = "stack")      # Stack up points of the same value.
+```
+
+## Pretty dot plots
+
+### Annotated code pattern
+1. Press 'Run Code' on the top right to see the plot.
+2. Try different argument values as suggested.
+3. Press 'Start Over' on the top left to restore the default.
+```{r annotated-code-pattern, echo=TRUE, exercise=TRUE}
+### Visualize data on a single variable
+
+## Create a variable `x` to store a set of numeric values
+x = c(4, 2, 2, 5, 2, 1, 3, 2, 4, 3, 4, 3, 1, 1, 4, 3, 5, 2, 4, 4, 2, 1, 3, 5, 2, 4, 4, 4, 2, 4, 3, 2, 4, 4, 2, 2, 1, 3, 1, 5, 4, 5, 5, 5, 3, 2, 3, 4, 1, 5)  # `c()` combines values inside the parentheses into a vector; `=` assignment operator assign the vector to variable `x`
+                                   
+## Create a dot plot for the values in variable `x`
+stripchart(              # Call the `stripchart()` function.
+  x,                     # Apply the function to variable `x`.
+  method = "stack",      # Stack up points of the same value.
+  frame.plot = FALSE,    # Remove the plot frame.
+  at = 0,                # Position the points at the bottom.
+  offset = 0.5,          # Separate stacking points by 0.5 of point size. TRY 1 or 2.
+  pch = 16,              # Set point symbol as 16-solid circle. TRY 0-square or 8-star.
+  col = "deepskyblue",   # Set point color as deepskyblue. TRY "forestgreen" or "deeppink".
+  main = "My dot plot",  # Create a plot title. TRY your own title. 
+  xlab = "Values")       # Label the x-axis. TRY your own label.
+```
+
+### Code pattern and output
+```{r code-pattern, echo=TRUE}
+x = c(4, 2, 2, 5, 2, 1, 3, 2, 4, 3, 4, 3, 1, 1, 4, 3, 5, 2, 4, 4, 2, 1, 3, 5, 2, 4, 4, 4, 2, 4, 3, 2, 4, 4, 2, 2, 1, 3, 1, 5, 4, 5, 5, 5, 3, 2, 3, 4, 1, 5)
+stripchart(x, method = "stack", frame.plot = FALSE, at = 0, offset = 0.5, pch = 16, col = "deepskyblue", main = "My dot plot", xlab = "Possible values")
+```
+
+### Code template
+```{r code-template, echo=TRUE, eval=FALSE}
+x = c(__ , __ , __)
+stripchart(x, method = "stack", frame.plot = FALSE, at = 0, offset = 0.5, pch = __, col = __, main = "__", xlab = "__")
+```
+
+### Comments
+```{r comments, echo=TRUE}
+### Visualize data on a single variable
+
+## Create a variable `x` to store a set of numeric values
+          # `c()` combines values inside the parentheses into a vector; `=` assignment operator assign the vector to variable `x`
+                                   
+## Create a dot plot for the values in variable `x`
+          # Call the `stripchart()` function.
+          # Apply the function to variable `x`.
+          # Atack up points of the same value.
+          # Remove the plot frame.
+          # Position the points at the bottom.
+          # Separate stacking points by 0.5 of point size. TRY 1 or 2.
+          # Set point symbol as 16-solid circle. TRY 0-square or 8-star.
+          # Set point color as deepskyblue. TRY "forestgreen" or "deeppink".
+          # Create a plot title. TRY your own title. 
+          # Label the x-axis. TRY your own label.
+```
+
+## Tutorial
+
+
+## Example 1: Phones per household 
+### Number of mobile phones per household
+<center>
+2, 2, 3, 3, 2, 4, 4, 5, 4, 5, 5, 5, 6, 4, 4, 4, 4, 5, 5, 6, 4, 3, 3, 4, 3
+</center>
+
+```{r phones, echo=TRUE, exercise=TRUE}
+phones = c(2, 2, 3, 3, 2, 4, 4, 5, 4, 5, 5, 5, 6, 4, 4, 4, 4, 5, 5, 6, 4, 3, 3, 4, 3)
+stripchart(phones, method = "stack", frame.plot = FALSE, at = 0, offset = 1, pch = 8, col = "red", main = "Number of mobile phones per household", xlab = NULL)
+```
+
+## Example 2: Beverage prices
+
+Prices of beverages at a coffee shop
+<center>
+2.25, 1.95, 2.25, 2.50, 3.50, 3.50, 4.00, 4.00, 3.25, 3.25, 4.25, 4.75, 2.75, 3.75, 4.75, 4.75, 5.00, 4.00, 5.00, 5.00
+</center>
+```{r beverage-prices, echo=TRUE, exercise=TRUE}
+beverage = c(2.25, 1.95, 2.25, 2.50, 3.50, 3.50, 4.00, 4.00, 3.25, 3.25, 4.25, 4.75, 2.75, 3.75, 4.75, 4.75, 5.00, 4.00, 5.00, 5.00)
+stripchart(beverage, method = "stack", frame.plot = FALSE, at = 0, offset = 1, pch = 4, col = "brown", main = "Prices of beverages at a coffee shop", xlab = NULL)
+```
+
+## Example 3: History test scores
+
+A high school history teacher recorded the test scores for 30 students on a recent exam. The score are listed below:
+
+88, 90, 85, 83, 89, 85, 81, 85, 86, 88, 85, 90, 85, 81, 86, 82, 84, 82, 83, 95, 88, 91, 92, 86, 82, 81, 81, 75, 83, 84
+
+Using the data above, construct a dotplot to better visualize and understand the data.
+
+```{r history-scores, echo=TRUE, exercise=TRUE}
+scores = c(88, 90, 85, 83, 89, 85, 81, 85, 86, 88, 85, 90, 85, 81, 86, 82, 84, 82, 83, 95, 88, 91, 92, 86, 82, 81, 81, 75, 83, 84)
+stripchart(scores, method = "stack", frame.plot = FALSE, at = 0, offset = 1, pch = 16, col = "orange", main = "History test scores", xlab = "Scores")
+```
+
+## Your scripting area
+
+
+```{r yours, exercise = TRUE}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
