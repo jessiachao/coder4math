@@ -1,8 +1,8 @@
 ---
-title: "Data basics"
+title: "Data basics v0.2"
 tutorial: 
   id: "test.id.1"
-  version: 0.1
+  version: 0.2
 output: 
   learnr::tutorial:
     progressive: true
