@@ -16,7 +16,7 @@ library(learnr)
 library(tidyverse)
 library(nycflights13)
 tutorial_options(exercise.timelimit = 60)
-options(tutorial.storage = filesystem_storage("/srv/shiny-server/examples/tut_stor", compress = TRUE))
+options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
 ```
 
 ## Welcome
