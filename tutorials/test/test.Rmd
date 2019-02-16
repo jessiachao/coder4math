@@ -1,5 +1,5 @@
 ---
-title: "Data basics v0.2.1"
+title: "Data basics v0.2.2"
 tutorial: 
   id: "test.id.1"
   version: 0.2
