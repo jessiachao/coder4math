@@ -1,0 +1,51 @@
+full_name,name,address,price,midgrade,preminum,open,close,hours,time_ttl,distance_ttl,time_gs2,distance_gs2
+BP 295,BP 295,"295 Massachusetts Ave, Arlington, MA 02474",2.5,,,07:00:00,22:00:00,15,37,16.5,19,12.3
+BP 563,BP 563,"563 Trapelo Rd, Belmont, MA 02478",2.34,2.54,2.74,07:00:00,22:00:00,15,38,15.8,19,10.6
+Broadway Gas,Broadway,"320 Broadway, Cambridge, MA 02139",2.66,,3.1,06:00:00,22:00:00,16,33,15.8,30,15.1
+Citgo 19,Citgo 19,"19 Park Ave, Arlington, MA 02474",2.6,,,06:00:00,22:00:00,16,36,17,17,10.6
+Cumberland Farms 120,CF 120,"120 Thoreau St, Concord, MA 01742",2.29,2.69,2.75,05:00:00,24:00:00,19,33,16.5,4,0.7
+Cumberland Farms 324,CF 324,"324 Marrett Rd, Lexington, MA 02421",2.39,,,06:00:00,23:00:00,17,39,15.9,15,6.5
+Cumberland Farms 701,CF 701,"701 Somerville Ave, Somerville, MA 02143",2.43,2.59,2.88,06:00:00,24:00:00,18,34,15.1,27,13.7
+Exxon 1089,Exxon 1089,"1089 Concord Turnpike, Concord, MA 01742",2.56,2.84,,05:00:00,22:00:00,17,33,16.4,6,1.5
+Fresh Pond Gas,Pond,"480 Concord Ave, Cambridge, MA 02138",2.56,,,00:00:00,24:00:00,24,28,14.7,19,12.6
+Gulf 27,Gulf 27,"27 Lexington St, Belmont, MA 02478",2.36,2.66,2.86,05:00:00,23:00:00,18,37,15.5,18,10.6
+Gulf 379,Gulf 379,"379 Alewife Brook Pkwy, Somerville, MA 02144",3.1,3.3,3.4,06:00:00,24:00:00,18,42,17.9,23,13.4
+Gulf 690,Gulf 690,"690 Marrett Rd, Lexington, MA 02421",2.62,2.96,3.17,00:00:00,24:00:00,24,37,18.4,37,18.4
+Gulf 85,Gulf 85,"85 River St, Arlington, MA 02474",2.58,,,09:00:00,21:00:00,12,40,17.7,20,12.8
+Gulf 892,Gulf 892,"892 Lexington St, Waltham, MA 02452",2.36,2.68,2.8,06:30:00,17:30:00,11,38,16.9,15,7.9
+Irving Oil,Irving,"500 Western Ave, Brighton, MA 02135",2.6,,3.8,05:00:00,23:00:00,18,40,18.4,28,15.4
+Jack's Gas,Jack's,"2535 Massachusetts Ave, Cambridge, MA 02140",2.36,,2.6,07:00:00,18:00:00,11,33,15.1,20,12.5
+Junior's Automotive & Gas,Junior's,"1725 Massachusetts Ave, Cambridge, MA 02138",2.4,2.63,2.83,06:00:00,22:00:00,16,34,15.7,26,14.2
+Lennys Service Center,Lennys,"768 Pleasant St, Belmont, MA 02478",2.4,2.68,,09:00:00,19:00:00,10,35,16.2,18,11.7
+Mass Ave Sunoco,Sunoco 1132,"1132 Massachusetts Ave, Arlington, MA 02476",2.6,,,06:00:00,22:00:00,16,37,16.7,17,10.1
+Mike's Gulf,Mike's,"1455 Trapelo Rd, Waltham, MA 02451",2.43,2.69,2.8,06:00:00,22:00:00,16,33,16,11,6.5
+Mobil 277,Mobil 277,"277 Bedford St, Lexington, MA 02420",2.7,3.06,3.26,06:00:00,22:00:00,16,39,21.9,13,7.9
+Mobil 1033,Mobil 1033,"1033 Trapelo Rd, Waltham, MA 02451",2.34,2.66,2.86,05:00:00,23:00:00,18,36,16.2,15,7.6
+Mobil 1116,Mobil 1116,"1116 Massachusetts Ave, Arlington, MA 02476",2.6,,,07:00:00,21:00:00,14,37,16.7,17,10.2
+Mobil 143,Mobil 143,"143 Sudbury Rd, Concord, MA 01742",2.56,2.9,3.06,00:00:00,24:00:00,24,33,16.2,4,1
+Mobil 22,Mobil 22,"22 Concord Turnpike, Concord, MA 01742",2.56,2.9,3.1,00:00:00,24:00:00,24,39,21.7,9,4.7
+Mobil 2615,Mobil 2615,"2615 Massachusetts Ave, Cambridge, MA 02140",2.5,,3,06:00:00,24:00:00,18,33,15.6,18,12.2
+Mobil 343,Mobil 343,"343 Fresh Pond Pkwy, Cambridge, MA 02138",2.5,2.9,3,00:00:00,24:00:00,24,29,14.9,19,12.7
+Mobil 365,Mobil 365,"365 Concord Ave, Belmont, MA 02478",2.7,,3.2,06:00:00,22:00:00,16,35,14.8,18,10.9
+Mobil 396,Mobil 396,"396 Waltham St, Lexington, MA 02421",2.32,2.78,2.98,06:00:00,23:00:00,17,35,15.8,13,6.5
+Mobil 660,Mobil 660,"660 Mt Auburn St, Watertown, MA 02472",2.6,,,06:00:00,22:00:00,16,37,17,25,14.2
+Mobil 816,Mobil 816,"816 Memorial Dr, Cambridge, MA 02139",2.5,2.9,3,00:00:00,24:00:00,24,34,21.4,27,19.9
+Mystic Street Gulf,Gulf 140,"140 Mystic St, Arlington, MA 02474",2.52,2.74,3,07:00:00,23:00:00,16,40,17.4,19,11.8
+Nicks Service Station,Nicks,"587 Mt Auburn St, Cambridge, MA 02138",2.7,2.9,3.16,07:00:00,22:00:00,15,32,15.7,22,13.6
+P & M Service Center,P&M,"82 Concord Ave, Belmont, MA 02478",2.6,,,07:00:00,21:00:00,14,33,14.7,19,11.5
+Shell 1001,Shell 1001,"1001 Cambridge St, Cambridge, MA 02141",2.9,3.52,,00:00:00,24:00:00,24,38,16.2,33,15.4
+Shell 207,Shell 207,"207 Magazine St, Cambridge, MA 02139",2.66,2.95,,07:00:00,21:30:00,14,37,22.1,28,20.3
+Shell 239,Shell 239,"239 Monsignor O'Brien Highway, Cambridge, MA 02141",2.8,3.52,,00:00:00,24:00:00,24,47,27.9,36,25.9
+Shell 260,Shell 260,"260 Lexington Ave, Cambridge, MA 02138",2.7,3.3,,09:00:00,19:00:00,10,31,15.2,20,12.9
+Shell 337,Shell 337,"337 Pleasant St, Belmont, MA 02478",2.56,,,06:00:00,23:00:00,17,31,15,15,10.6
+Shell 511,Shell 511,"511 Totten Pond Rd, Waltham, MA 02451",2.7,3,3,07:00:00,17:00:00,10,36,19.2,13,7.9
+Shell 820,Shell 820,"820 Memorial Dr, Cambridge, MA 02139",2.5,2.9,3,00:00:00,24:00:00,24,34,21.3,27,19.9
+Shell 915,Shell 915,"915 Waltham St, Lexington, MA 02421",2.36,2.66,2.86,00:00:00,24:00:00,24,32,15.8,13,7.7
+Shell 934,Shell 934,"934 Massachusetts Ave, Arlington, MA 02476",2.6,,3.1,06:00:00,23:00:00,17,38,16.8,18,11.1
+Speedway 123,Spdwy 123,"123 Cambridge St, Cambridge, MA 02141",2.4,2.63,2.83,00:00:00,24:00:00,24,45,27.3,35,25.6
+Speedway 2055,Spdwy 2055,"2055 Massachusetts Ave, Cambridge, MA 02140",2.36,2.56,2.76,05:30:00,22:30:00,17,34,15.5,24,13.3
+Speedway 287,Spdwy 287,"287 Prospect St, Cambridge, MA 02139",2.36,2.56,2.76,00:00:00,24:00:00,24,36,16,32,15.3
+Sunoco 286,Sunc 286,"286 Lincoln St, Lexington, MA 02421",2.32,2.9,2.96,06:00:00,22:00:00,16,35,16.2,11,5.5
+Sunoco 515,Sunc 515,"515 Concord Ave, Cambridge, MA 02138",2.66,3.2,,00:00:00,24:00:00,24,31,15.2,19,12.8
+Titan Gas & Car Wash,Titan,"590 Boston Ave, Medford, MA 02155",2.42,,,06:00:00,21:00:00,15,38,16.6,25,13.9
+Wave,Wave,"1211 Main St, Concord, MA 01742",2.79,2.99,3.19,08:00:00,16:00:00,8,38,19.3,8,2.5
