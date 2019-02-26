@@ -1,0 +1,556 @@
+---
+title: "Meal Plan vs. Pay As You Go"
+output: learnr::tutorial
+Author: CodeR4MATH Team
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+
+# install.packages("dplyr", repos='http://cran.us.r-project.org')
+
+menu <- read.csv(file = "datasets/campus_center_menu.csv", stringsAsFactors = FALSE, header = TRUE)
+
+options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
+```
+
+## Overloaded Counselors
+
+Counselors at colleges are responsible for improving students' well-being. They help students learn practical life skills necessary to manage their busy and often stressful college life.  
+
+A challenge facing many counselors is the increasing demand. While enrollment increases year after year, the university has not expanded the counseling team to accommendate for the increasing demand. Therefore, more often than not the advices are too general, not specific for each student's needs.
+
+For instance, many students are concerned about their expenses. One question students often ask is whether they should sign up for the meal plans offered by the dining departments. With meal plans, you make one payment at the beginning of a semester and have unlimited (or by swipe) access to designated dining locations. Without a meal plan, you can still visit the dining hall and pay per meal, or go to other retail dining locations and pay as you go or, yet, cook on your own (if you have a kitchen, skills, and... time). 
+
+To simplify the question, we will focus on two options for now:  
+
+Between **Meal Plan** and **Pay As You Go** (that is, going to retail dining locations), how should counselors give advice to students (assuming the counselors are not biased or influenced by the college administration)?  
+
+There are a lot of factors to consider: convenience, food variety, special diet, etc. But one factor commonly considered is costs. If someone has a tight budget, they may want to choose the less expensive option. For others with more budgetary flexibility, they do not want to overpay either. So how do the two ways of dining compare in terms of costs? That's the question most students would have in mind. 
+
+In this lesson, let's tackle this question together. In the end, you will learn how to define a modeling problem, create solutions, design algorithms, and write R code so that college counselors can run the model for individual students' needs and efficiently and accurately help each student.
+
+Discuss the following questions with your partners:
+
+<div class="alert alert-info">
+**1.** What factors do counselors need to consider to provide sound advice?  
+**2.** How can counselors provide more specific advice to students according to their particular situations?  
+**3.** How can counselors work in a more efficient way, helping more students within the same amount of time?
+</div>
+
+Work on a whiteboard, a large notepad, or a document on your computer. Jot down as many ideas as you can and sort them into categories.
+
+## Dining at UMass (under development)
+
+Let's consider the particular case of the University of Massachusetts Amherst (**UMass Amherst**). 
+
+[Annotated campus map](https://www.umass.edu/visitorsctr/sites/default/files/maps/campus-map.pdf)
+<br>
+
+> Well, meal plan and pay as you go are two very different ways of dining. Does it make sense to compare their costs? What assumptions do you have to make to justify that it is a fair comparison?
+
+## UMass Meal Plans
+
+UMass Dining offers many meal plans. For our purpose here, we will just consider two popular options:
+
+**Unlimited +** *$3,269 / Semester*
+
+Unlimited Access to all four campus dining commons!
+Includes $500 Dining Dollars for use in any on-campus retail dining location
+Open to both on-campus & off-campus students
+15 Guest Meals included
+
+**Unlimited** *$3,067 / Semester*
+
+Unlimited Access to all four campus dining commons!
+Includes $250 Dining Dollars for use in any on-campus retail dining location
+Open to both on-campus & off-campus students
+15 Guest Meals included
+
+Dine at dining commons with cash prices  
+
+* Breakfast: \$8.50
+* Lunch: \$11.50
+* Dinner: \$14.50
+
+[UMass Amherst Residential Meal Plans](http://umassdining.com/meal-plans/residential-meal-plan)
+<br>
+
+[UMass Amherst Meal Plan FAQ's](http://umassdining.com/faq)
+<br>
+
+[Cash prices at dining commons](https://www.umass.edu/events/best-campus-food-dinner)
+<br>
+
+## UMass Retailers (under development)  
+<br>
+There are over on-campus 40 retailers (cafes, restaurants, coffeeshops...). They offer a variety of foods and beverages.
+
+[Add images of some cafes]
+
+We prepared a data set with the menu information of the retailers at the Campus Center.   
+
+```{r menu, exercise = TRUE}
+menu
+```
+
+```{r arrange-restaurant, exercise = TRUE}
+library(dplyr)
+arrange(menu, restaurant)
+```
+
+```{r arrange-category, exercise = TRUE}
+library(dplyr)
+arrange(menu, category)
+```
+
+```{r dotchart, exercise = TRUE}
+dotchart(menu$price,
+         groups = as.factor(menu$category),
+         color = rainbow(7)[as.factor(menu$category)],
+         xlab = "Price in US$",
+         pt.cex  = 0.5,
+         pch = 19,
+         main = "Prices at Campus Center")
+```
+
+If you need more information, check the links below:
+
+[UMass Amherst Campus Center Restaurants](http://umassdining.com/locations-menus/campus-center)
+<br>
+
+
+## Assumptions
+
+Have you thought about how these two dining options can be compared on a fair basis?  
+
+Some assumptions for our case can be:  
+<br>
+**1. Cash flow is adequate**  
+That is, the student will have enough funds available to pay for either a meal plan or to opt for paying per meal (pay-as-you-go).  
+
+**2. Retailers' hours of operation is not a concern**  
+Although retailers have different hours of operations, the student will always have at least a couple options where to have a meal.  
+   
+**3. Retailers' locations are convenient**  
+Retailers are spread around campus (j nor off-campus) in a way that visiting one of them is equally or more convenient than going to one of the dining commons.
+   
+**4. Ignore guest meals**  
+At least initially, we can ignore guest meals, a perk offered with every meal plan. 
+
+
+## Algorithm & Code
+
+Now, let's think clearly what results the model should produce. Basicly, the results should be:
+
+<div class="alert alert-info">
+What option is less expensive?
+<br>
+How much is the difference between the two options?
+</div>
+
+Let's pretend that we already know which meal plan to choose and how much the total cost of pay as you go would be. We can write an R code to represent this end result.
+
+The box below is an **R coding area**. The black texts inside are **R code**, which is a sequence of **commands** to carry out certain tasks. The green texts starting with the hashtag (#) are **comments**, which are explanations for humans to understand the code. R will ignore them when you run the code.  
+
+- Click **'Run Code'** on the top-right corner. You will see the outputs below the box.  
+- Change 3269 on the first line to 3067 (to reflect a different meal plan) and run the code again. See the new outputs?  
+- To restore the original code, click **Start Over** on the top-left corner.  
+
+```{r output, exercise = TRUE}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste("Selected meal plan:", meal_plan)
+paste("Paying as you go:", pay_go)
+paste("Difference between the two:", difference)
+```
+
+In the following pages, we will recreate this code snippet together, step by step. You will learn the programming concepts behind it and be able to customize it to your liking.
+
+## --------------------
+
+## Inputs - meal plan
+
+First, let's create a variable called `meal_plan` and use the assignment operator `=` to assign a numeric value to it (3269, the cost of the Unlimited+ plan). Variable name on the left and the value on the right.  
+
+In programming, ***variable*** is a symbolic name that is used to keep track of a value that can change while a program is running. That means `meal_plan` will hold the value `3269` for now.
+
+If you run the code, you won't see any output. It is simply stored in R's memory, which is invisible to us.  
+```{r create, exercise = TRUE}
+# create a variable called 'meal_plan' and assign a value to it
+meal_plan = 3269 
+```
+
+To see the value we assigned, simply type the name of the variable.  
+
+- Run the code below and check out the output.   
+- Change the value to some other value.  
+- Rerun the code and check if the output changes correspondingly.
+
+```{r create-view, exercise = TRUE}
+# Create a variable called 'meal_plan' and assign a value to it
+meal_plan = 3269  
+# View the value assigned to the variable 'meal_plan'
+meal_plan         
+```
+
+## An interactive report
+
+For viewers to know what this number is, let's add a text that says "Selected meal plan:".  
+
+Text is also called ***string*** in R. To let R know something is a string, we need to put the string it between quotation marks.  
+
+- Run the code and check the outputs.  
+- Change the text to something you like (don't forget the quotation marks)
+- Rerun the code and check the outputs.
+
+```{r create-view-note, exercise = TRUE}
+# Create a variable called 'meal_plan' and assign a value to it
+meal_plan = 3269  
+# Create a note for the output
+"Meal plan price: "
+# View the value assigned to the variable 'meal_plan'
+meal_plan
+```
+
+Now, let's put the text and the number together to make a short report like this **Selected meal plan: 3269**. To do that, let's use an R function called `paste()`.   
+
+To use the `paste()` function, simply type its name `paste` and immediately follow with argument values (`"Selected meal plan:"` and `meal_plan`) seperated by commas `,` and enclosed in parentheses `()`.
+
+- Run the code and check the outputs.  
+- Change the value assigned to `meal_plan` and modify the text `"Selected meal plan:"` to something you like.
+- Rerun the code and check if the new outputs reflect the changes you made.
+
+```{r create-report, exercise = TRUE}
+# Create a variable called 'meal_plan' and assign 3269 to it
+meal_plan = 3269  
+# Create a report for the output
+paste("Selected meal plan:", meal_plan)
+```
+
+## Inputs - Paying as you go
+
+Now you know how to create a variable, assign a value to it, and generate an interactive report. Try it yourself to:  
+
+1. Create the variable `pay_go` (a shorter name to represent paying as you go) and assigned a dummy value 3000 to it.  
+2. Generate a report that says "Paying as you go: 3000".
+
+- Add to the existing code below.
+- Run the new code and check the output.
+- If you need help, click the **Hint** button on the top.
+- Done? Ask the teacher to check your work.
+
+```{r pay_go, exercise = TRUE, exercise.lines = 12}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+
+
+# Report the cost of selected meal plan
+paste("Selected meal plan:", meal_plan)
+
+# Report the cost of paying as you go
+
+
+```
+
+```{r pay_go-hint}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+# Assign a dummy value to variable 'pay_go'
+pay_go = ____  
+
+# Report the cost of selected meal plan
+paste("Selected meal plan:", meal_plan)
+
+# Report the cost of paying as you go
+# Insert the variable name 'pay_go' in the paste() function
+paste("Paying as you go:", ______)
+```
+
+## Compute the Difference
+
+Now we have both inputs: costs of meal plan and paying as you go. Let's compute the difference. R has many arithmetic operators (`+`, `-`, `*`, `/`, `^`, and more). Here, let's use subtraction operator `-`.
+
+```{r subtraction, exercise = TRUE}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+meal_plan - pay_go
+```
+
+If you assign a greater value, say $4000, to `pay_go`, R will return a negative value. Well, we want to always report a positive value. To do that, we can use an R function called `abs`.
+
+Type its name and a pair of parentheses `abs()` and place the expression `meal_plan - pay_as_you_go` inside the parentheses.
+
+```{r abs, exercise = TRUE}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+abs(meal_plan - pay_go)
+```
+
+Create a variable `difference` and assign the result of the `abs()` function applied to the expression `meal_plan - pay_go`.
+
+```{r step4_5, exercise = TRUE}
+# Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Reporting the results
+paste("Selected meal plan:", meal_plan)
+paste("Paying as you go:", pay_go)
+paste("Difference between the two:", difference)
+```
+
+## Customize It
+
+Below you will find the entire script with all the pieces put together.   
+It's yours, and you can change variables names and values, outputs, and comments to your liking.  
+
+In **R**, you can name variables using a single letter, multiple letters, and with additional numbers, underscores, and dots (you can't start with a number though, or use some special symbols). For example, you can use a shorter name to represent the meal plan cost, such as `mp` or use a longer name like `meal_plan_cost_semester`.
+
+
+```{r full-code, exercise = TRUE, exercise.cap = "Full Code", exercise.lines = 22}
+#-----------------------------------------------------------
+# R Code to report the difference between two dining options
+#-----------------------------------------------------------
+# 1. Choose which meal plan to consider:
+meal_plan = 3269
+
+# 2. Estimate the cost of pay-as-you-go:
+pay_go = 3150
+
+# 4. Compute the difference between the two costs (in absolute $):
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste("Selected meal plan:", meal_plan)
+paste("Paying as you go:", pay_go)
+paste("Difference between the two:", difference)
+```
+<br>
+
+## --------------------
+
+## A Rough Estimate
+
+The unknown input of our model is the cost of pay-as-you-go over a semester (the `pay_go` variable). Let's ***assume*** that students eat more or less the same way each day, so we can roughly estimate the total cost based on a daily cost and the number of days in a semester.  
+
+Let's update the pay_go variable with an ***arithmetic expression***. In the code snippet below, we estimated \$5 for breakfast, \$8 for lunch, and \$10 for dinner. And there are 7 days in a week and about 15 weeks in a semester.  
+
+R has all the ***arithematic operators*** you will need: `+`, `-`, `*`, `/`, `^` (for exponents).  
+
+**PEMDAS** applies in R as well: **P**arentheses first, followed by **E**xponents, **M**ultiply or **D**ivide, and **A**ddition and **S**ubtraction.
+
+- Run the code and check the output.
+- Change the estimates to what you have in mind (perhaps a $7 breakfast works better for you).
+- Rerun the code and check the new output.
+
+```{r pay-go, exercise = TRUE}
+pay_go = (5 + 8 + 10) * (7 * 15)
+
+paste("Paying as you go:", pay_go)
+```
+
+## Daily & Days
+
+The daily cost and number of days are just rough estimates. They will change a lot when we investigate further. Let's make it easier to change these estimates later.  
+In the code snippet below, we created variables `daily` and `days` to hold their estimates, and then we created an ***expression*** `daily * days` and assigned the expression to the variable `pay_go`. R will first evaluate the expression with the current values of `daily` ($23) and `days` (105 days) and then assign the result (\$2415) to `pay_go`.  
+
+- Run the code and check the output.
+- Change the estimates as you like.
+- Rerun the code and check the new output.
+
+```{r daily-days, exercise = TRUE}
+# Estimate the daily cost adding dummy values for each meal:
+daily = 5 + 8 + 10
+# Estimate the number of days in one academic semester:
+days = 7 * 15
+# Estimate the cost of paying as you go, by the end of semester:
+pay_go = daily * days
+
+paste("Paying as you go total cost:", pay_go)
+```
+
+The new variables also allow us to add details to the report. In the snippet below, we added reports for daily cost and number of days estimated.  
+
+- Run the code and check the output.
+- Change the estimates as you like, rerun the code and check the output.
+
+```{r daily-days-report, exercise = TRUE}
+daily = 5 + 8 + 10
+days = 7 * 15
+pay_go = daily * days
+
+paste("Daily:", daily)
+paste("Number of days:", days)
+paste("Paying as you go total cost:", pay_go)
+```
+
+## Breakfast, lunch, & dinner
+
+You may wonder whether the three values (\$5, \$8, \$10) assigned to `daily` should also be turned into variables. That will make it clearer what they are and easier to update the estimates later. You are on the right track!  
+
+Now you know how to assign an expression to a variable. Try it yourself to create variables `breakfast`, `lunch`, and `dinner`, add them up and assign to the variable `daily`.   
+
+- Complete the code below.
+- Run the code and check the output.
+- If you need help, click the **Hint** button on top of the R coding space. The **code hint** contains underscores to indicate blanks to fill. Make sure you remove the underscores before running the code.
+- Done? Ask the teacher to check your work.
+
+```{r three-meals, exercise = TRUE}
+# Create variable 'breakfast' and assign a value to it 
+breakfast = 5
+
+# Create variable `lunch` and assign a value to it
+
+
+# Create variable `dinner` and assign a value to it
+
+
+# Assign the sum of 'breakfast', 'lunch', 'dinner'
+# to variable 'daily'  
+daily = 
+  
+# Report
+paste("Pay-as-you-go daily cost:", daily)
+```
+
+```{r three-meals-hint}
+breakfast = 5
+# assign a value to variable 'lunch'
+lunch = ___ 
+# assign a value to variable 'dinner'
+dinner = ___ 
+# also add 'lunch' and 'dinner' to the expression
+daily = breakfast + _____ + _____
+
+paste("Pay-as-you-go daily cost:", daily)
+```
+
+## Snacks?
+
+Something important is missing! The students need snacks to keep their energy up. 
+In the R coding space below, incorporate snacks to your estimate of daily cost of paying as you go. Consider creating a variable for this new item to make it easy to update its estimate later.
+
+- Add code to the existing code below.
+- Run the new code and check the output.
+- Click **Hint** if you need help.
+- Done? Ask the teacher to check your work.
+
+```{r snack, exercise = TRUE}
+breakfast = 5
+lunch = 8
+dinner = 10
+daily = breakfast + lunch + dinner
+paste("Paying as you go daily cost:", daily)
+```
+
+```{r snack-hint}
+breakfast = 5
+lunch = 8
+dinner = 10
+# create a new variable called 'snack' and assign 2 to it
+snack = _____
+# add the new variable 'snack' to the expression assigned to 'daily'
+daily = breakfast + lunch + dinner + ______ 
+paste("Paying as you go daily cost:", daily)
+```
+
+## A better report
+
+Recall the *main script* we wrote earlier (see below). The number assigned to `pay_go` was just a dummy value.
+
+```{r echo=TRUE, eval=FALSE}
+# Choose which meal plan to consider:
+meal_plan = 3269
+# Estimate the cost of pay as you go:
+pay_go = 3150 
+# Compute the difference (in absolute $):
+difference = abs(meal_plan - pay_go)
+
+# Report the difference:
+paste("Selected meal plan:", meal_plan)
+paste("Paying as you go:", pay_go)
+paste("The difference is", difference, "dollars.")
+```
+
+Now, let's add the code snippet to the main script.  
+
+The *paying as you go* snippet
+```{r echo=TRUE, eval=FALSE}
+# Estimating total cost of paying as you go
+breakfast = 5
+lunch = 8
+dinner = 10
+snack = 2
+daily = breakfast + lunch + dinner + snack
+days  = 15 * 7
+pay_go = daily * days
+
+# Reporting results
+paste("Pay-as-you-go daily cost:", daily)
+paste("Number of days:", days)
+paste("Pay-as-you-go total cost:", pay_go)
+```
+
+In the code below, we have replaced step 2 "# Estimate the cost of pay as you go:" in the main script with the estimating part of the *pay as you go* snippet. Can you add the two additional report lines below to the script?
+
+```{r echo=TRUE, eval=FALSE}
+paste("Pay-as-you-go daily cost:", daily)
+paste("Number of days:", days)
+```
+
+```{r report-new, exercise = TRUE}
+# Choose which meal plan to consider:
+meal_plan = 3269
+
+# ---------- NEW ----------
+# Estimating the cost of paying as you go
+breakfast = 5
+lunch = 8
+dinner = 10
+snack = 2
+daily = breakfast + lunch + dinner + snack
+days  = 15 * 7
+pay_go = daily * days
+# -------------------------
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste("Selected meal plan:", meal_plan)
+paste("Pay as you go:", pay_go)
+paste("Difference between the two:", difference)
+```
+
+
+

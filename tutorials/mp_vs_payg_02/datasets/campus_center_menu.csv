@@ -1,0 +1,217 @@
+restaurant,category,item,size,price
+people,beverage,people’s organic coffee,S,1.95
+people,beverage,people’s organic coffee,L,2.25
+people,beverage,organic espresso,N,1.95
+people,beverage,espresso macchiato,N,2.25
+people,beverage,organic cafe americano,S,2.00
+people,beverage,organic cafe americano,L,2.50
+people,beverage,cappuccino,S,2.75
+people,beverage,cappuccino,L,3.50
+people,beverage,cafe latte,S,2.75
+people,beverage,cafe latte,L,4.00
+people,beverage,vanilla latte,S,3.25
+people,beverage,vanilla latte,L,4.00
+people,beverage,cafe mocha,S,3.25
+people,beverage,cafe mocha,L,4.00
+people,beverage,organic chai,S,2.75
+people,beverage,organic chai,L,3.25
+people,beverage,organic hot cocoa,S,2.75
+people,beverage,organic hot cocoa,L,3.25
+people,beverage,caramel sea salt latte,S,3.75
+people,beverage,caramel sea salt latte,L,4.25
+people,beverage,agave almond milk,S,4.25
+people,beverage,agave almond milk,L,4.75
+people,beverage,iced coffee,N,2.75
+people,beverage,iced cafe latte,N,3.75
+people,beverage,iced mocha latte,N,4.75
+people,beverage,iced caramel sea salt latte,N,4.75
+people,beverage,java quencher,N,5.00
+people,beverage,cranberry crush,N,4.00
+people,beverage,agave almond milk latte,N,5.00
+people,beverage,hemp milk coconut mocha,N,5.00
+people,bakery,muffins,N,2.25
+people,bakery,bars,N,2.25
+people,bakery,brownies,N,2.25
+people,bakery,cookies,N,1.75
+people,bakery,croissants,N,2.00
+people,bakery,GF scones,N,2.25
+people,bakery,steel cut organic oatmeal,N,3.00
+people,bakery,toasted organic bagel,N,2.50
+people,bakery,toasted bagel w cream cheese,N,3.00
+people,bakery,seasonal quiche,N,3.50
+people,bakery,ham and gruyere biscuit,N,4.50
+people,sandwich,big red lentil burger,N,7.00
+people,sandwich,chelsea sandwich,N,6.75
+people,sandwich,turkey and bacon ciabatta,N,7.75
+people,sandwich,"chicken, goat cheese ciabatta",N,7.75
+people,sandwich,three cheese veggie ciabatta,N,7.00
+people,sandwich,roasted turkey and pesto,N,8.25
+people,sandwich,tuna salad sandwich,N,8.25
+people,sandwich,egg salad sandwich,N,7.25
+people,sandwich,peoples best veggie wrap,N,7.25
+people,salad,grilled chicken caesar,N,8.25
+people,salad,really greek,N,7.75
+people,salad,roasted beet,N,7.25
+people,salad,antioxidant salad,N,8.25
+people,salad,quinoa bowl,N,7.00
+people,salad,acai bowl,N,7.00
+people,salad,power bowl,N,7.00
+people,salad,spa salad,N,8.25
+people,sandwich,breakfast bagel,N,4.75
+people,sandwich,natural breakfast croissant,N,4.75
+people,sandwich,vegetarian croissant,N,4.50
+people,sandwich,eggal,N,3.75
+green_fields,salad,garden salad,N,6.50
+green_fields,salad,caesar salad,N,6.50
+green_fields,salad,southwestern salad,N,7.50
+green_fields,salad,blueberry cheddar salad,N,7.50
+green_fields,salad,antipasto salad,N,9.00
+green_fields,salad,buffalo chicken salad,N,9.00
+green_fields,salad,cobb salad,N,9.00
+green_fields,salad,pesto chicken salad,N,9.00
+green_fields,salad,harvest salad,N,8.50
+green_fields,entree,chicken tenders w salad,N,9.00
+green_fields,beverage,fountain drink,N,1.00
+tamales,entree,burrito grilled beef,N,8.00
+tamales,entree,burrito grilled chicken,N,8.00
+tamales,entree,burrito pork carnita,N,8.00
+tamales,entree,burrito refried lentils,N,7.00
+tamales,entree,rice bowl grilled beef,N,8.00
+tamales,entree,rice bowl grilled chicken,N,8.00
+tamales,entree,rice bowl pork carnita,N,8.00
+tamales,entree,rice bowl refried lentils,N,7.00
+tamales,entree,quesadilla bowl beef,N,8.00
+tamales,entree,quesadilla bowl chicken,N,8.00
+tamales,entree,quesadilla bowl pork carnita,N,8.00
+tamales,entree,quesadilla bowl refried lentils,N,7.00
+tamales,salad,salad bowl grilled beef,N,8.00
+tamales,salad,salad bowl grilled chicken,N,8.00
+tamales,salad,salad bowl pork carnita,N,8.00
+tamales,salad,salad bowl refried lentils,N,7.00
+tamales,side,chips and salsa,N,2.00
+tamales,beverage,agua fresca,N,2.95
+tamales,beverage,fountain drink,N,1.00
+wasabi,entree,chicken teriaky donburi,N,9.00
+wasabi,entree,beef teriaky donburi,N,9.00
+wasabi,entree,salmon teriaky donburi,N,9.00
+wasabi,entree,chicken katsu donburi,N,9.00
+wasabi,entree,pork katsu donburi,N,9.00
+wasabi,entree,beef donburi,N,10.00
+wasabi,entree,vegetable donburi,N,10.00
+wasabi,entree,chicken teppanyaki,N,9.00
+wasabi,entree,beef teppanyaki,N,9.00
+wasabi,entree,paradise roll,N,10.00
+wasabi,entree,rainbow roll,N,10.00
+wasabi,entree,fantastic roll,N,10.00
+wasabi,entree,manhattan roll,N,9.00
+wasabi,entree,oishi roll,N,10.00
+wasabi,entree,tiger roll,N,10.00
+wasabi,entree,alaskan roll,N,7.50
+wasabi,entree,california roll,N,6.50
+wasabi,entree,vegetable roll,N,6.50
+wasabi,entree,sweet potato tempura roll,N,6.50
+wasabi,entree,spicy tuna roll,N,7.00
+wasabi,entree,philadelphia roll,N,7.50
+wasabi,entree,spicy tuna bowl,N,10.00
+wasabi,entree,poke bowl,N,10.00
+wasabi,side,miso soup,N,2.00
+wasabi,side,edamame,N,3.25
+wasabi,side,seaweed salad,N,3.25
+wasabi,side,fried rice,N,3.75
+wasabi,beverage,fountain drink,N,1.00
+deli_delish,sandwich,chicken bacon ciabatta,N,8.00
+deli_delish,sandwich,buffalo chicken ciabatta,N,8.00
+deli_delish,sandwich,steak cheese ciabatta,N,8.00
+deli_delish,sandwich,chicken pesto ciabatta,N,8.00
+deli_delish,sandwich,valley chicken,N,8.00
+deli_delish,sandwich,tavola veggie,N,6.75
+deli_delish,sandwich,spicy roast beef,N,7.00
+deli_delish,sandwich,italian cold cut,N,8.00
+deli_delish,sandwich,caprese,N,7.00
+deli_delish,sandwich,classic grinder,N,7.00
+deli_delish,sandwich,three cheese spinach,N,7.25
+deli_delish,sandwich,the blt,N,6.00
+deli_delish,sandwich,blue wall club,N,8.00
+deli_delish,sandwich,chicken parmesan,N,8.00
+deli_delish,side,hummus,N,3.00
+deli_delish,beverage,fountain drink,N,1.00
+star_ginger,entree,green curry chicken,N,8.50
+star_ginger,entree,tofu veggies in yellow curry,N,8.00
+star_ginger,entree,thai bbq chicken,N,8.50
+star_ginger,entree,five spice tofy,N,8.50
+star_ginger,entree,orange chicken,N,8.50
+star_ginger,entree,wok special,N,8.50
+star_ginger,entree,chicken pho,N,8.00
+star_ginger,entree,beef pho,N,8.00
+star_ginger,entree,tofu pho,N,8.00
+star_ginger,entree,chicken pho in ginger broth,N,8.50
+star_ginger,entree,beef pho in ginger broth,N,8.50
+star_ginger,entree,tofu pho in ginger broth,N,8.50
+star_ginger,entree,chicken pho in coconut curry,N,8.50
+star_ginger,entree,beef pho in coconut curry,N,8.50
+star_ginger,entree,tofu pho in coconut curry,N,8.50
+star_ginger,entree,korean style rice bowl,N,10.00
+star_ginger,side,pot sticker,N,1.25
+star_ginger,side,spring roll,N,1.25
+star_ginger,side,brown rice,N,1.50
+star_ginger,side,white rice,N,1.50
+star_ginger,side,sesame asian greens,N,2.50
+star_ginger,beverage,fountain drink,N,1.00
+grill,sandwich,beef burger,S,5.00
+grill,sandwich,beef burger,L,7.00
+grill,sandwich,turkey burger,S,5.00
+grill,sandwich,turkey burger,L,7.00
+grill,sandwich,chicken burger,S,5.00
+grill,sandwich,chicken burger,L,7.00
+grill,sandwich,veggie burger,S,5.00
+grill,sandwich,veggie burger,L,7.00
+grill,entree,"burger, fries, fruit, drink",S,8.00
+grill,entree,"burger, fries, fruit, drink",L,10.00
+grill,entree,chicken tenders,N,7.00
+grill,entree,chicken and fries basket,N,9.00
+grill,side,french fries,N,3.00
+grill,side,onion rings,N,3.50
+grill,side,sweet potato fries,N,3.50
+grill,side,side garden salad,N,2.50
+grill,beverage,milkshake,N,5.00
+grill,beverage,fountain drink,N,1.00
+bamboo,entree,dim sum six pieces,L,9.00
+bamboo,entree,dim sum 2 pieces,S,3.50
+bamboo,entree,daily lunch and dinner,N,9.00
+bamboo,beverage,fountain drink,N,1.00
+paciugo,dessert,ice cream 2 flavors,S,2.49
+paciugo,dessert,ice cream 3 flavors,S,3.99
+paciugo,dessert,ice cream 4 flavors,L,4.99
+paciugo,dessert,ice cream 5 flavors,L,5.99
+paciugo,dessert,ice cream 3 flavors on waffle,S,4.99
+paciugo,dessert,frappe,N,5.99
+paciugo,dessert,frizzante,N,5.99
+paciugo,dessert,gelato smoothie,N,5.99
+harvest,entree,hot entree per pound,N,8.99
+harvest,salad,salad bar per pound,N,8.99
+harvest,beverage,juice blends,N,4.99
+harvest,beverage,smoothies,N,5.99
+harvest,dessert,mapple valley pint,L,6.49
+harvest,beverage,assorted sodas and drinks 1,N,1.50
+harvest,beverage,assorted sodas and drinks 2,N,6.99
+harvest,side,assorted local cheeses,N,0.79
+harvest,side,assorted local cheeses,N,5.29
+tavola,entree,falafel with tahini bowl,N,9.00
+tavola,entree,beef kefta with tzatiki bowl,N,9.00
+tavola,entree,chicken skewers bowl,N,9.00
+tavola,entree,mediterranean wrap,N,9.00
+tavola,entree,rigatoni with tomatoes bowl,N,9.00
+tavola,entree,linguini with pesto bowl,N,9.00
+tavola,entree,chicken broccoli alfredo bowl,N,9.00
+tavola,entree,daily special,N,9.00
+tavola,salad,tavola salad,N,9.00
+tavola,side,two skewers ,N,3.50
+tavola,side,falafel,N,3.50
+tavola,side,extra hummus,N,3.50
+tavola,side,dolma,N,2.50
+tavola,side,olives,N,2.50
+tavola,side,extra pita,N,1.50
+tavola,beverage,drink,N,1.00
+tavola,entree,four cheese pizzeta,N,6.00
+tavola,entree,pepperoni pizzeta,N,6.00
+tavola,entree,daily special pizzeta,N,7.00

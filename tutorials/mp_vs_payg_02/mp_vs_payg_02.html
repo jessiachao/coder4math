@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<meta name="progressive" content="false" />
+<meta name="allow-skip" content="false" />
+
+<title>Meal Plan vs. Pay As You Go</title>
+
+
+<!-- highlightjs -->
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="pageContent band">
+<div class="bandContent page">
+
+<div class="topics">
+
+<div id="section-overloaded-counselors" class="section level2">
+<h2>Overloaded Counselors</h2>
+<p>Counselors at colleges are responsible for improving students’ well-being. They help students learn practical life skills necessary to manage their busy and often stressful college life.</p>
+<p>A challenge facing many counselors is the increasing demand. While enrollment increases year after year, the university has not expanded the counseling team to accommendate for the increasing demand. Therefore, more often than not the advices are too general, not specific for each student’s needs.</p>
+<p>For instance, many students are concerned about their expenses. One question students often ask is whether they should sign up for the meal plans offered by the dining departments. With meal plans, you make one payment at the beginning of a semester and have unlimited (or by swipe) access to designated dining locations. Without a meal plan, you can still visit the dining hall and pay per meal, or go to other retail dining locations and pay as you go or, yet, cook on your own (if you have a kitchen, skills, and… time).</p>
+<p>To simplify the question, we will focus on two options for now:</p>
+<p>Between <strong>Meal Plan</strong> and <strong>Pay As You Go</strong> (that is, going to retail dining locations), how should counselors give advice to students (assuming the counselors are not biased or influenced by the college administration)?</p>
+<p>There are a lot of factors to consider: convenience, food variety, special diet, etc. But one factor commonly considered is costs. If someone has a tight budget, they may want to choose the less expensive option. For others with more budgetary flexibility, they do not want to overpay either. So how do the two ways of dining compare in terms of costs? That’s the question most students would have in mind.</p>
+<p>In this lesson, let’s tackle this question together. In the end, you will learn how to define a modeling problem, create solutions, design algorithms, and write R code so that college counselors can run the model for individual students’ needs and efficiently and accurately help each student.</p>
+<p>Discuss the following questions with your partners:</p>
+<div class="alert alert-info">
+<p><strong>1.</strong> What factors do counselors need to consider to provide sound advice?<br />
+<strong>2.</strong> How can counselors provide more specific advice to students according to their particular situations?<br />
+<strong>3.</strong> How can counselors work in a more efficient way, helping more students within the same amount of time?</p>
+</div>
+<p>Work on a whiteboard, a large notepad, or a document on your computer. Jot down as many ideas as you can and sort them into categories.</p>
+</div>
+<div id="section-dining-at-umass" class="section level2">
+<h2>Dining at UMass</h2>
+<p>Let’s consider the particular case of the University of Massachusetts Amherst (<strong>UMass Amherst</strong>).</p>
+<p><a href="https://www.umass.edu/visitorsctr/sites/default/files/maps/campus-map.pdf">Annotated campus map</a> <br></p>
+<blockquote>
+<p>Well, meal plan and pay as you go are two very different ways of dining. Does it make sense to compare their costs? What assumptions do you have to make to justify that it is a fair comparison?</p>
+</blockquote>
+</div>
+<div id="section-umass-meal-plans" class="section level2">
+<h2>UMass Meal Plans</h2>
+<p>UMass Dining offers many meal plans. For our purpose here, we will just consider two popular options:</p>
+<p><strong>Unlimited +</strong> <em>$3,269 / Semester</em></p>
+<p>Unlimited Access to all four campus dining commons! Includes $500 Dining Dollars for use in any on-campus retail dining location Open to both on-campus &amp; off-campus students 15 Guest Meals included</p>
+<p><strong>Unlimited</strong> <em>$3,067 / Semester</em></p>
+<p>Unlimited Access to all four campus dining commons! Includes $250 Dining Dollars for use in any on-campus retail dining location Open to both on-campus &amp; off-campus students 15 Guest Meals included</p>
+<p>Dine at dining commons with cash prices</p>
+<ul>
+<li>Breakfast: $8.50</li>
+<li>Lunch: $11.50</li>
+<li>Dinner: $14.50</li>
+</ul>
+<p><a href="http://umassdining.com/meal-plans/residential-meal-plan">UMass Amherst Residential Meal Plans</a> <br></p>
+<p><a href="http://umassdining.com/faq">UMass Amherst Meal Plan FAQ’s</a> <br></p>
+<p><a href="https://www.umass.edu/events/best-campus-food-dinner">Cash prices at dining commons</a> <br></p>
+</div>
+<div id="section-umass-retailers-under-development" class="section level2">
+<h2>UMass Retailers (under development)</h2>
+<p><br> There are over on-campus 40 retailers (cafes, restaurants, coffeeshops…). They offer a variety of foods and beverages.</p>
+<p>[Add images of some cafes]</p>
+<p>We prepared a data set with the menu information of the retailers at the Campus Center.</p>
+<div class="tutorial-exercise" data-label="menu" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>menu</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise" data-label="arrange-restaurant" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>library(dplyr)
+arrange(menu, restaurant)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise" data-label="arrange-category" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>library(dplyr)
+arrange(menu, category)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise" data-label="dotchart" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>dotchart(menu$price,
+         groups = as.factor(menu$category),
+         color = rainbow(7)[as.factor(menu$category)],
+         xlab = &quot;Price in US$&quot;,
+         pt.cex  = 0.5,
+         pch = 19,
+         main = &quot;Prices at Campus Center&quot;)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>If you need more information, check the links below:</p>
+<p><a href="http://umassdining.com/locations-menus/campus-center">UMass Amherst Campus Center Restaurants</a> <br></p>
+</div>
+<div id="section-assumptions" class="section level2">
+<h2>Assumptions</h2>
+<p>Have you thought about how these two dining options can be compared on a fair basis?</p>
+<p>Some assumptions for our case can be:<br />
+<br> <strong>1. Cash flow is adequate</strong><br />
+That is, the student will have enough funds available to pay for either a meal plan or to opt for paying per meal (pay-as-you-go).</p>
+<p><strong>2. Retailers’ hours of operation is not a concern</strong><br />
+Although retailers have different hours of operations, the student will always have at least a couple options where to have a meal.</p>
+<p><strong>3. Retailers’ locations are convenient</strong><br />
+Retailers are spread around campus (j nor off-campus) in a way that visiting one of them is equally or more convenient than going to one of the dining commons.</p>
+<p><strong>4. Ignore guest meals</strong><br />
+At least initially, we can ignore guest meals, a perk offered with every meal plan.</p>
+</div>
+<div id="section-algorithm-code" class="section level2">
+<h2>Algorithm &amp; Code</h2>
+<p>Now, let’s think clearly what results the model should produce. Basicly, the results should be:</p>
+<div class="alert alert-info">
+<p>What option is less expensive? <br> How much is the difference between the two options?</p>
+</div>
+<p>Let’s pretend that we already know which meal plan to choose and how much the total cost of pay as you go would be. We can write an R code to represent this end result.</p>
+<p>The box below is an <strong>R coding area</strong>. The black texts inside are <strong>R code</strong>, which is a sequence of <strong>commands</strong> to carry out certain tasks. The green texts starting with the hashtag (#) are <strong>comments</strong>, which are explanations for humans to understand the code. R will ignore them when you run the code.</p>
+<ul>
+<li>Click <strong>‘Run Code’</strong> on the top-right corner. You will see the outputs below the box.<br />
+</li>
+<li>Change 3269 on the first line to 3067 (to reflect a different meal plan) and run the code again. See the new outputs?<br />
+</li>
+<li>To restore the original code, click <strong>Start Over</strong> on the top-left corner.</li>
+</ul>
+<div class="tutorial-exercise" data-label="output" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+paste(&quot;Paying as you go:&quot;, pay_go)
+paste(&quot;Difference between the two:&quot;, difference)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>In the following pages, we will recreate this code snippet together, step by step. You will learn the programming concepts behind it and be able to customize it to your liking.</p>
+</div>
+<div id="section-section" class="section level2">
+<h2>——————–</h2>
+</div>
+<div id="section-inputs---meal-plan" class="section level2">
+<h2>Inputs - meal plan</h2>
+<p>First, let’s create a variable called <code>meal_plan</code> and use the assignment operator <code>=</code> to assign a numeric value to it (3269, the cost of the Unlimited+ plan). Variable name on the left and the value on the right.</p>
+<p>In programming, <strong><em>variable</em></strong> is a symbolic name that is used to keep track of a value that can change while a program is running. That means <code>meal_plan</code> will hold the value <code>3269</code> for now.</p>
+If you run the code, you won’t see any output. It is simply stored in R’s memory, which is invisible to us.<br />
+
+<div class="tutorial-exercise" data-label="create" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># create a variable called &#39;meal_plan&#39; and assign a value to it
+meal_plan = 3269 </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>To see the value we assigned, simply type the name of the variable.</p>
+<ul>
+<li>Run the code below and check out the output.<br />
+</li>
+<li>Change the value to some other value.<br />
+</li>
+<li>Rerun the code and check if the output changes correspondingly.</li>
+</ul>
+<div class="tutorial-exercise" data-label="create-view" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Create a variable called &#39;meal_plan&#39; and assign a value to it
+meal_plan = 3269  
+# View the value assigned to the variable &#39;meal_plan&#39;
+meal_plan         </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+</div>
+<div id="section-an-interactive-report" class="section level2">
+<h2>An interactive report</h2>
+<p>For viewers to know what this number is, let’s add a text that says “Selected meal plan:”.</p>
+<p>Text is also called <strong><em>string</em></strong> in R. To let R know something is a string, we need to put the string it between quotation marks.</p>
+<ul>
+<li>Run the code and check the outputs.<br />
+</li>
+<li>Change the text to something you like (don’t forget the quotation marks)</li>
+<li>Rerun the code and check the outputs.</li>
+</ul>
+<div class="tutorial-exercise" data-label="create-view-note" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Create a variable called &#39;meal_plan&#39; and assign a value to it
+meal_plan = 3269  
+# Create a note for the output
+&quot;Meal plan price: &quot;
+# View the value assigned to the variable &#39;meal_plan&#39;
+meal_plan</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>Now, let’s put the text and the number together to make a short report like this <strong>Selected meal plan: 3269</strong>. To do that, let’s use an R function called <code>paste()</code>.</p>
+<p>To use the <code>paste()</code> function, simply type its name <code>paste</code> and immediately follow with argument values (<code>&quot;Selected meal plan:&quot;</code> and <code>meal_plan</code>) seperated by commas <code>,</code> and enclosed in parentheses <code>()</code>.</p>
+<ul>
+<li>Run the code and check the outputs.<br />
+</li>
+<li>Change the value assigned to <code>meal_plan</code> and modify the text <code>&quot;Selected meal plan:&quot;</code> to something you like.</li>
+<li>Rerun the code and check if the new outputs reflect the changes you made.</li>
+</ul>
+<div class="tutorial-exercise" data-label="create-report" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Create a variable called &#39;meal_plan&#39; and assign 3269 to it
+meal_plan = 3269  
+# Create a report for the output
+paste(&quot;Selected meal plan:&quot;, meal_plan)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+</div>
+<div id="section-inputs---paying-as-you-go" class="section level2">
+<h2>Inputs - Paying as you go</h2>
+<p>Now you know how to create a variable, assign a value to it, and generate an interactive report. Try it yourself to:</p>
+<ol style="list-style-type: decimal">
+<li>Create the variable <code>pay_go</code> (a shorter name to represent paying as you go) and assigned a dummy value 3000 to it.<br />
+</li>
+<li>Generate a report that says “Paying as you go: 3000”.</li>
+</ol>
+<ul>
+<li>Add to the existing code below.</li>
+<li>Run the new code and check the output.</li>
+<li>If you need help, click the <strong>Hint</strong> button on the top.</li>
+<li>Done? Ask the teacher to check your work.</li>
+</ul>
+<div class="tutorial-exercise" data-label="pay_go" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="12">
+<pre class="text"><code># Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+
+
+# Report the cost of selected meal plan
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+
+# Report the cost of paying as you go</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="pay_go-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+# Assign a dummy value to variable &#39;pay_go&#39;
+pay_go = ____  
+
+# Report the cost of selected meal plan
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+
+# Report the cost of paying as you go
+# Insert the variable name &#39;pay_go&#39; in the paste() function
+paste(&quot;Paying as you go:&quot;, ______)</code></pre>
+</div>
+</div>
+<div id="section-compute-the-difference" class="section level2">
+<h2>Compute the Difference</h2>
+<p>Now we have both inputs: costs of meal plan and paying as you go. Let’s compute the difference. R has many arithmetic operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, and more). Here, let’s use subtraction operator <code>-</code>.</p>
+<pre><code>## [1] 269</code></pre>
+<p>If you assign a greater value, say $4000, to <code>pay_go</code>, R will return a negative value. Well, we want to always report a positive value. To do that, we can use an R function called <code>abs</code>.</p>
+<p>Type its name and a pair of parentheses <code>abs()</code> and place the expression <code>meal_plan - pay_as_you_go</code> inside the parentheses.</p>
+<div class="tutorial-exercise" data-label="abs" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+abs(meal_plan - pay_go)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>Create a variable <code>difference</code> and assign the result of the <code>abs()</code> function applied to the expression <code>meal_plan - pay_go</code>.</p>
+<div class="tutorial-exercise" data-label="step4_5" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Choose which meal plan to consider
+meal_plan = 3269
+
+# Estimate the cost of paying as you go
+pay_go = 3000
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Reporting the results
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+paste(&quot;Paying as you go:&quot;, pay_go)
+paste(&quot;Difference between the two:&quot;, difference)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+</div>
+<div id="section-customize-it" class="section level2">
+<h2>Customize It</h2>
+<p>Below you will find the entire script with all the pieces put together.<br />
+It’s yours, and you can change variables names and values, outputs, and comments to your liking.</p>
+<p>In <strong>R</strong>, you can name variables using a single letter, multiple letters, and with additional numbers, underscores, and dots (you can’t start with a number though, or use some special symbols). For example, you can use a shorter name to represent the meal plan cost, such as <code>mp</code> or use a longer name like <code>meal_plan_cost_semester</code>.</p>
+<div class="tutorial-exercise" data-label="full-code" data-caption="Full Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="22">
+<pre class="text"><code>#-----------------------------------------------------------
+# R Code to report the difference between two dining options
+#-----------------------------------------------------------
+# 1. Choose which meal plan to consider:
+meal_plan = 3269
+
+# 2. Estimate the cost of pay-as-you-go:
+pay_go = 3150
+
+# 4. Compute the difference between the two costs (in absolute $):
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+paste(&quot;Paying as you go:&quot;, pay_go)
+paste(&quot;Difference between the two:&quot;, difference)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p><br></p>
+</div>
+<div id="section-section-1" class="section level2">
+<h2>——————–</h2>
+</div>
+<div id="section-a-rough-estimate" class="section level2">
+<h2>A Rough Estimate</h2>
+<p>The unknown input of our model is the cost of pay-as-you-go over a semester (the <code>pay_go</code> variable). Let’s <strong><em>assume</em></strong> that students eat more or less the same way each day, so we can roughly estimate the total cost based on a daily cost and the number of days in a semester.</p>
+<p>Let’s update the pay_go variable with an <strong><em>arithmetic expression</em></strong>. In the code snippet below, we estimated $5 for breakfast, $8 for lunch, and $10 for dinner. And there are 7 days in a week and about 15 weeks in a semester.</p>
+<p>R has all the <strong><em>arithematic operators</em></strong> you will need: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code> (for exponents).</p>
+<p><strong>PEMDAS</strong> applies in R as well: <strong>P</strong>arentheses first, followed by <strong>E</strong>xponents, <strong>M</strong>ultiply or <strong>D</strong>ivide, and <strong>A</strong>ddition and <strong>S</strong>ubtraction.</p>
+<ul>
+<li>Run the code and check the output.</li>
+<li>Change the estimates to what you have in mind (perhaps a $7 breakfast works better for you).</li>
+<li>Rerun the code and check the new output.</li>
+</ul>
+<div class="tutorial-exercise" data-label="pay-go" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>pay_go = (5 + 8 + 10) * (7 * 15)
+
+paste(&quot;Paying as you go:&quot;, pay_go)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+</div>
+<div id="section-daily-days" class="section level2">
+<h2>Daily &amp; Days</h2>
+<p>The daily cost and number of days are just rough estimates. They will change a lot when we investigate further. Let’s make it easier to change these estimates later.<br />
+In the code snippet below, we created variables <code>daily</code> and <code>days</code> to hold their estimates, and then we created an <strong><em>expression</em></strong> <code>daily * days</code> and assigned the expression to the variable <code>pay_go</code>. R will first evaluate the expression with the current values of <code>daily</code> ($23) and <code>days</code> (105 days) and then assign the result ($2415) to <code>pay_go</code>.</p>
+<ul>
+<li>Run the code and check the output.</li>
+<li>Change the estimates as you like.</li>
+<li>Rerun the code and check the new output.</li>
+</ul>
+<div class="tutorial-exercise" data-label="daily-days" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Estimate the daily cost adding dummy values for each meal:
+daily = 5 + 8 + 10
+# Estimate the number of days in one academic semester:
+days = 7 * 15
+# Estimate the cost of paying as you go, by the end of semester:
+pay_go = daily * days
+
+paste(&quot;Paying as you go total cost:&quot;, pay_go)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<p>The new variables also allow us to add details to the report. In the snippet below, we added reports for daily cost and number of days estimated.</p>
+<ul>
+<li>Run the code and check the output.</li>
+<li>Change the estimates as you like, rerun the code and check the output.</li>
+</ul>
+<div class="tutorial-exercise" data-label="daily-days-report" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>daily = 5 + 8 + 10
+days = 7 * 15
+pay_go = daily * days
+
+paste(&quot;Daily:&quot;, daily)
+paste(&quot;Number of days:&quot;, days)
+paste(&quot;Paying as you go total cost:&quot;, pay_go)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+</div>
+<div id="section-breakfast-lunch-dinner" class="section level2">
+<h2>Breakfast, lunch, &amp; dinner</h2>
+<p>You may wonder whether the three values ($5, $8, $10) assigned to <code>daily</code> should also be turned into variables. That will make it clearer what they are and easier to update the estimates later. You are on the right track!</p>
+<p>Now you know how to assign an expression to a variable. Try it yourself to create variables <code>breakfast</code>, <code>lunch</code>, and <code>dinner</code>, add them up and assign to the variable <code>daily</code>.</p>
+<ul>
+<li>Complete the code below.</li>
+<li>Run the code and check the output.</li>
+<li>If you need help, click the <strong>Hint</strong> button on top of the R coding space. The <strong>code hint</strong> contains underscores to indicate blanks to fill. Make sure you remove the underscores before running the code.</li>
+<li>Done? Ask the teacher to check your work.</li>
+</ul>
+<div class="tutorial-exercise" data-label="three-meals" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Create variable &#39;breakfast&#39; and assign a value to it 
+breakfast = 5
+
+# Create variable `lunch` and assign a value to it
+
+
+# Create variable `dinner` and assign a value to it
+
+
+# Assign the sum of &#39;breakfast&#39;, &#39;lunch&#39;, &#39;dinner&#39;
+# to variable &#39;daily&#39;  
+daily = 
+  
+# Report
+paste(&quot;Pay-as-you-go daily cost:&quot;, daily)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="three-meals-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>breakfast = 5
+# assign a value to variable &#39;lunch&#39;
+lunch = ___ 
+# assign a value to variable &#39;dinner&#39;
+dinner = ___ 
+# also add &#39;lunch&#39; and &#39;dinner&#39; to the expression
+daily = breakfast + _____ + _____
+
+paste(&quot;Pay-as-you-go daily cost:&quot;, daily)</code></pre>
+</div>
+</div>
+<div id="section-snacks" class="section level2">
+<h2>Snacks?</h2>
+<p>Something important is missing! The students need snacks to keep their energy up. In the R coding space below, incorporate snacks to your estimate of daily cost of paying as you go. Consider creating a variable for this new item to make it easy to update its estimate later.</p>
+<ul>
+<li>Add code to the existing code below.</li>
+<li>Run the new code and check the output.</li>
+<li>Click <strong>Hint</strong> if you need help.</li>
+<li>Done? Ask the teacher to check your work.</li>
+</ul>
+<div class="tutorial-exercise" data-label="snack" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>breakfast = 5
+lunch = 8
+dinner = 10
+daily = breakfast + lunch + dinner
+paste(&quot;Paying as you go daily cost:&quot;, daily)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="snack-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>breakfast = 5
+lunch = 8
+dinner = 10
+# create a new variable called &#39;snack&#39; and assign 2 to it
+snack = _____
+# add the new variable &#39;snack&#39; to the expression assigned to &#39;daily&#39;
+daily = breakfast + lunch + dinner + ______ 
+paste(&quot;Paying as you go daily cost:&quot;, daily)</code></pre>
+</div>
+</div>
+<div id="section-a-better-report" class="section level2">
+<h2>A better report</h2>
+<p>Recall the <em>main script</em> we wrote earlier (see below). The number assigned to <code>pay_go</code> was just a dummy value.</p>
+<pre class="r"><code># Choose which meal plan to consider:
+meal_plan = 3269
+# Estimate the cost of pay as you go:
+pay_go = 3150 
+# Compute the difference (in absolute $):
+difference = abs(meal_plan - pay_go)
+
+# Report the difference:
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+paste(&quot;Paying as you go:&quot;, pay_go)
+paste(&quot;The difference is&quot;, difference, &quot;dollars.&quot;)</code></pre>
+<p>Now, let’s add the code snippet to the main script.</p>
+<p>The <em>paying as you go</em> snippet</p>
+<pre class="r"><code># Estimating total cost of paying as you go
+breakfast = 5
+lunch = 8
+dinner = 10
+snack = 2
+daily = breakfast + lunch + dinner + snack
+days  = 15 * 7
+pay_go = daily * days
+
+# Reporting results
+paste(&quot;Pay-as-you-go daily cost:&quot;, daily)
+paste(&quot;Number of days:&quot;, days)
+paste(&quot;Pay-as-you-go total cost:&quot;, pay_go)</code></pre>
+<p>In the code below, we have replaced step 2 “# Estimate the cost of pay as you go:” in the main script with the estimating part of the <em>pay as you go</em> snippet. Can you add the two additional report lines below to the script?</p>
+<pre class="r"><code>paste(&quot;Pay-as-you-go daily cost:&quot;, daily)
+paste(&quot;Number of days:&quot;, days)</code></pre>
+<div class="tutorial-exercise" data-label="report-new" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code># Choose which meal plan to consider:
+meal_plan = 3269
+
+# ---------- NEW ----------
+# Estimating the cost of paying as you go
+breakfast = 5
+lunch = 8
+dinner = 10
+snack = 2
+daily = breakfast + lunch + dinner + snack
+days  = 15 * 7
+pay_go = daily * days
+# -------------------------
+
+# Compute the difference between the two
+difference = abs(meal_plan - pay_go)
+
+# Report the results
+paste(&quot;Selected meal plan:&quot;, meal_plan)
+paste(&quot;Pay as you go:&quot;, pay_go)
+paste(&quot;Difference between the two:&quot;, difference)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
+</div>
+
+<script type="application/shiny-prerendered" data-context="server-start">
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+
+install.packages("dplyr", repos='http://cran.us.r-project.org')
+
+menu <- read.csv(file = "datasets/campus_center_menu.csv", stringsAsFactors = FALSE, header = TRUE)
+
+# options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
+
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::register_http_handlers(session, metadata = NULL)
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-menu-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-menu-code-editor`)), session)
+output$`tutorial-exercise-menu-output` <- renderUI({
+  `tutorial-exercise-menu-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-arrange-restaurant-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-arrange-restaurant-code-editor`)), session)
+output$`tutorial-exercise-arrange-restaurant-output` <- renderUI({
+  `tutorial-exercise-arrange-restaurant-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-arrange-category-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-arrange-category-code-editor`)), session)
+output$`tutorial-exercise-arrange-category-output` <- renderUI({
+  `tutorial-exercise-arrange-category-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-dotchart-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-dotchart-code-editor`)), session)
+output$`tutorial-exercise-dotchart-output` <- renderUI({
+  `tutorial-exercise-dotchart-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-output-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-output-code-editor`)), session)
+output$`tutorial-exercise-output-output` <- renderUI({
+  `tutorial-exercise-output-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-create-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-create-code-editor`)), session)
+output$`tutorial-exercise-create-output` <- renderUI({
+  `tutorial-exercise-create-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-create-view-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-create-view-code-editor`)), session)
+output$`tutorial-exercise-create-view-output` <- renderUI({
+  `tutorial-exercise-create-view-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-create-view-note-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-create-view-note-code-editor`)), session)
+output$`tutorial-exercise-create-view-note-output` <- renderUI({
+  `tutorial-exercise-create-view-note-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-create-report-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-create-report-code-editor`)), session)
+output$`tutorial-exercise-create-report-output` <- renderUI({
+  `tutorial-exercise-create-report-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-pay_go-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pay_go-code-editor`)), session)
+output$`tutorial-exercise-pay_go-output` <- renderUI({
+  `tutorial-exercise-pay_go-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-abs-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-abs-code-editor`)), session)
+output$`tutorial-exercise-abs-output` <- renderUI({
+  `tutorial-exercise-abs-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-step4_5-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-step4_5-code-editor`)), session)
+output$`tutorial-exercise-step4_5-output` <- renderUI({
+  `tutorial-exercise-step4_5-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-full-code-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-full-code-code-editor`)), session)
+output$`tutorial-exercise-full-code-output` <- renderUI({
+  `tutorial-exercise-full-code-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-pay-go-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-pay-go-code-editor`)), session)
+output$`tutorial-exercise-pay-go-output` <- renderUI({
+  `tutorial-exercise-pay-go-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-daily-days-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-daily-days-code-editor`)), session)
+output$`tutorial-exercise-daily-days-output` <- renderUI({
+  `tutorial-exercise-daily-days-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-daily-days-report-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-daily-days-report-code-editor`)), session)
+output$`tutorial-exercise-daily-days-report-output` <- renderUI({
+  `tutorial-exercise-daily-days-report-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-three-meals-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-three-meals-code-editor`)), session)
+output$`tutorial-exercise-three-meals-output` <- renderUI({
+  `tutorial-exercise-three-meals-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-snack-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-snack-code-editor`)), session)
+output$`tutorial-exercise-snack-output` <- renderUI({
+  `tutorial-exercise-snack-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-report-new-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-report-new-code-editor`)), session)
+output$`tutorial-exercise-report-new-output` <- renderUI({
+  `tutorial-exercise-report-new-result`()
+})
+</script>
+ <!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery-1.11.3"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap-3.3.5"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/cerulean.min.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["pagedtable"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pagedtable-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["js/pagedtable.js"]},{"type":"character","attributes":{},"value":["css/pagedtable.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["textmate.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-autocompletion"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-autocompletion.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-diagnostics"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-diagnostics.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-format"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmarkdown/templates/tutorial/resources"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-format.js"]},{"type":"character","attributes":{},"value":["tutorial-format.css","rstudio-theme.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery-1.11.3"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.0.13"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["js/fontawesome-all.min.js","js/fa-v4-shims.min.js"]},{"type":"character","attributes":{},"value":["css/fa-svg-with-js.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["4.4.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["localforage"]},{"type":"character","attributes":{},"value":["1.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/localforage"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["localforage.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-autocompletion"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-autocompletion.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-diagnostics"]},{"type":"character","attributes":{},"value":["0.9.2.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-diagnostics.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]}]}]}
+</script>
+<!--/html_preserve-->
+</div>
+
+</div> <!-- topics -->
+
+<div class="topicsContainer">
+<div class="topicsPositioner">
+<div class="band">
+<div class="bandContent topicsListContainer">
+
+<!-- begin doc-metadata -->
+<div id="doc-metadata">
+<h2 class="title toc-ignore" style="display:none;">Meal Plan vs. Pay As You Go</h2>
+</div>
+<!-- end doc-metadata -->
+
+</div> <!-- bandContent.topicsListContainer -->
+</div> <!-- band -->
+</div> <!-- topicsPositioner -->
+</div> <!-- topicsContainer -->
+
+
+</div> <!-- bandContent page -->
+</div> <!-- pageContent band -->
+
+
+
+
+<script>
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+</script>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+
+</html>
