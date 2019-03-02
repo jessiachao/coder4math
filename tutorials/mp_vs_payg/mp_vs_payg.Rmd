@@ -9,8 +9,6 @@ runtime: shiny_prerendered
 library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 
-# install.packages("dplyr", repos='http://cran.us.r-project.org')
-
 commons <- read.csv("datasets/commons.csv")[c("name", "type", "days", "open", "close")]
 
 retailers <- read.csv("datasets/retailers.csv")[c("name", "days", "open", "close")]
@@ -26,7 +24,7 @@ salad    = subset(menu, type == "salad")
 sandwich = subset(menu, type == "sandwich")
 side     = subset(menu, type == "side")
 
-# options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
+options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
 ```
 
 ## 1 ---------- Introduction
