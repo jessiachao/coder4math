@@ -1,0 +1,364 @@
+name.out,type.out,retailer.out,size.out,price.out
+Queso fundido,appetizer,veracruzana,N,8.5
+Queso fundido with chorizo sausage,appetizer,veracruzana,N,9.5
+Queso fundido with chicken,appetizer,veracruzana,N,9.5
+Sopa azteca,appetizer,veracruzana,N,6
+House salad,salad,veracruzana,N,6
+House salad with chicken,salad,veracruzana,N,8
+House salad with steak,salad,veracruzana,N,11.5
+House salad with shrimp,salad,veracruzana,N,11.5
+House salad with fish,salad,veracruzana,N,11.5
+Primavera,salad,veracruzana,N,8
+Tostadas,entree,veracruzana,N,6.5
+Tostadas with chicken,entree,veracruzana,N,7.5
+Tostadas with beef,entree,veracruzana,N,7.5
+Tostadas wit cactus,entree,veracruzana,N,7.5
+Tostadas with potato and carrots,entree,veracruzana,N,7.5
+Tostadas with steak,entree,veracruzana,N,8
+Tostadas with chorizo and egg,entree,veracruzana,N,8
+Tacos with beans (2),entree,veracruzana,N,4.5
+Tacos with beans and chicken (2),entree,veracruzana,N,6
+Tacos with beans and beef (2),entree,veracruzana,N,6
+"Tacos with beans, potatoes, and carrots (2)",entree,veracruzana,N,6
+Tacos with beans with cactus (2),entree,veracruzana,N,6.5
+"Tacos with beans, chorizo, and egg (2)",entree,veracruzana,N,7
+Tacos with beans and steak (2),entree,veracruzana,N,8
+Tacos with beans and beef tongue (2),entree,veracruzana,N,8
+Mexican sandwich chicken,sandwich,veracruzana,N,11
+Mexican sandwich steak,sandwich,veracruzana,N,12
+Fish tortas mexican sandwich,sandwich,veracruzana,N,12
+Quesadillas (3),entree,veracruzana,S,5
+Quesadillas (4),entree,veracruzana,L,7.5
+Sincronizadas ,entree,veracruzana,S,5
+Sincronizadas (2),entree,veracruzana,L,7.5
+Shrimp emchilladas,entree,veracruzana,N,16
+Huachinando a la veracruzana,entree,veracruzana,N,18.95
+Camarones al mojo de ajo,entree,veracruzana,N,19
+Pescado en tomatillo,entree,veracruzana,N,16
+Fish tacos (2) ,entree,veracruzana,N,9
+Burrito (simple),entree,veracruzana,N,6
+Burrito with chicken,entree,veracruzana,N,8.5
+Burrito with beef,entree,veracruzana,N,8.5
+Burrito with potatoes and carrots,entree,veracruzana,N,8.5
+Vegetable fajitas,entree,veracruzana,N,7
+Steak fajitas,entree,veracruzana,N,8.5
+Chicken fajitas,entree,veracruzana,N,8.5
+Enchiladas,entree,veracruzana,S,12.5
+Enchiladas,entree,veracruzana,L,13
+Enfrijoladas,entree,veracruzana,N,9.75
+Chiles rellenos,entree,veracruzana,N,13.5
+Chiles rellenos with beef and cheese,entree,veracruzana,N,14.5
+Taquitos (two),entree,veracruzana,S,9.5
+Taquitos (six),entree,veracruzana,L,12.5
+Burrito especial,entree,veracruzana,N,11.5
+Burrito especial with steak,entree,veracruzana,N,12.5
+Burrito especial with shrimp,entree,veracruzana,N,12.5
+Burrito especial with fish,entree,veracruzana,N,12.5
+Calabacitas,entree,veracruzana,N,11
+Enchiladas de domingo,entree,veracruzana,N,12.5
+Enchiladas suizas,entree,veracruzana,N,12.5
+Chicken enchiladas suizas,entree,veracruzana,N,14.5
+Tamales (2),entree,veracruzana,N,11
+Tamales (12),entree,veracruzana,L,35
+Huevos rancheros,entree,veracruzana,N,11
+Puntas de filete,entree,veracruzana,N,19
+Pechuga de pollo en mole poblano,entree,veracruzana,N,14
+Salvadorian special – pupusas,entree,veracruzana,N,8
+Plato durango,entree,veracruzana,N,19.5
+Pechuga de pollo ala veracruzana,entree,veracruzana,N,14
+Agua fresca,beverage,veracruzana,N,3.5
+Guacamole,side,veracruzana,S,3.25
+Guacamole,side,veracruzana,L,4.25
+Salsa habanera y mango,side,veracruzana,S,2
+Sour cream,side,veracruzana,S,0.95
+Pico de gallo,side,veracruzana,S,1
+Grilled jalapeno,side,veracruzana,S,0.5
+Totopos,side,veracruzana,N,3.5
+Arroz,side,veracruzana,N,2.45
+Potato and carrot,side,veracruzana,N,3
+Yuca,side,veracruzana,N,6
+Frijoles,side,veracruzana,N,2.45
+Arroz and frijoles,side,veracruzana,N,5
+Soft corn tortillas,side,veracruzana,N,1
+Platanos fritos,side,veracruzana,N,6
+Flan,dessert,veracruzana,N,6
+Prosciuto americano,appetizer,osteria_vespa,N,6.54
+Bresaola,appetizer,osteria_vespa,N,6.54
+Sweet sopressata salame di campagna ,appetizer,osteria_vespa,N,6.54
+Hot capocollo,appetizer,osteria_vespa,N,6.54
+"Prosciuto, bresaola, sopressata, and hot capocollo",appetizer,osteria_vespa,L,22
+Caciotta al tartufo,appetizer,osteria_vespa,N,4.5
+Coupole,appetizer,osteria_vespa,N,4.5
+Taleggio,appetizer,osteria_vespa,N,4.5
+Gorgonzola dolce,appetizer,osteria_vespa,N,4.5
+"Caciotta, coupole, taleggio, and gorgonzola",appetizer,osteria_vespa,L,16
+"Caciotta, coupole, taleggio, gorgonzola, and honey",appetizer,osteria_vespa,L,20
+Four cheeses and four salumi,appetizer,osteria_vespa,L,36
+Panelle,appetizer,osteria_vespa,N,9
+Absinthe roasted olives,appetizer,osteria_vespa,N,5
+Spicy calabrian chili prawns,appetizer,osteria_vespa,N,11
+Italian meatballs,appetizer,osteria_vespa,N,15
+Frito misto,appetizer,osteria_vespa,N,15
+Winter salad with local greens,salad,osteria_vespa,N,8
+Tuscan arugula salad,salad,osteria_vespa,N,9.5
+Burrata salad,salad,osteria_vespa,N,13
+Risotto alla barbabietola,entree,osteria_vespa,N,18
+Orchiette alla bolognese,entree,osteria_vespa,N,28
+Gnudi alla pomodoro,entree,osteria_vespa,N,28
+Pan seared sea trout,entree,osteria_vespa,N,28
+Roasted veal osso bucco,entree,osteria_vespa,N,29
+Duck breast with almond crumb,entree,osteria_vespa,N,27
+Pork chop 14 Oz,entree,osteria_vespa,N,32
+Salted butter caramel chocolate mousse,dessert,osteria_vespa,N,8
+House made cannoli,dessert,osteria_vespa,N,7
+Affogato,dessert,osteria_vespa,N,7
+Villa dolce sorbetto,dessert,osteria_vespa,N,6
+Villa dolce gelatto,dessert,osteria_vespa,N,6
+Biscotto,dessert,osteria_vespa,N,2
+Vanilla bourbon panna cotta,dessert,osteria_vespa,N,8
+Lobster ravioli and chicken,entree,judie,N,24.95
+Madeira chicken dinner,entree,judie,N,21.95
+Steak and potato combo,entree,judie,N,26.95
+Southwest rubbed steak,entree,judie,N,26.95
+Steak and mushroom risotto,entree,judie,N,26.95
+Roasted garlic salmon,entree,judie,N,23.95
+Seafood gumbo,entree,judie,N,24.95
+Drunken scallops and bacon,entree,judie,N,24.95
+Three cheese and bacon burger,entree,judie,N,10.5
+Guacamole burger,entree,judie,N,10.5
+"Cheddar, onion, and bacon burger",entree,judie,N,10.5
+Gorgonzola and mushroom burger,entree,judie,N,10.5
+Plain burger,entree,judie,N,9.5
+Daily souper,entree,judie,N,11.75
+Vegetarian dinner with black bean sauce,entree,judie,N,21.95
+Pasta carbonara,entree,judie,N,18.75
+"Chicken, ravioli, and walnuts",entree,judie,N,18.75
+Salmon saute,entree,judie,N,18.95
+Vegetarian angel hair,entree,judie,N,14.95
+Vegetarian crispy risotto primavera,entree,judie,N,15.95
+Salmon small meal,entree,judie,S,12.95
+Beef shoulder tender small meal,entree,judie,S,11.95
+Lobster ravioli and chicken,entree,judie,S,12.95
+Scallop and tomato tart tatin,entree,judie,S,15.95
+Chicken little,entree,judie,S,9.95
+Lobster little,entree,judie,S,16.95
+Steak little,entree,judie,S,11.95
+Salmon little,entree,judie,S,10.95
+Burger little,entree,judie,S,9.95
+Falafel little,entree,judie,S,9.95
+Turkey little,entree,judie,S,9.95
+Ice cream flavor of the day,dessert,judie,S,2.25
+Ice cream flavor of the day,dessert,judie,L,3.25
+Popover ice cream sundae,dessert,judie,N,7.95
+Ice cream sundae,dessert,judie,S,2.95
+Ice cream sundae,dessert,judie,L,3.95
+Banana’s foster,dessert,judie,N,6.95
+Chocolate decadence,dessert,judie,N,5.95
+Derby pie,dessert,judie,N,4
+Molten chocolate bundt,dessert,judie,N,4.25
+Raspberry pie,dessert,judie,N,4.25
+Key lime pie,dessert,judie,N,4.25
+Peanut butter pie,dessert,judie,N,4.95
+Chocolate midnite layer cake,dessert,judie,N,4.75
+Gluten free chocolate torte,dessert,judie,N,4.25
+Sticky toffee pudding cake,dessert,judie,N,5.5
+Bean burrito,entree,bueno_y_sano,N,6.54
+Bean burrito,entree,bueno_y_sano,L,7.29
+"Bean burrito (chicken, steak or pulled pork)",entree,bueno_y_sano,N,7.94
+"Bean burrito (chicken, steak or pulled pork)",entree,bueno_y_sano,L,8.69
+Sautee spinach and garlic burrito,entree,bueno_y_sano,N,7.94
+Sautee spinach and garlic burrito,entree,bueno_y_sano,L,8.69
+Grilled shrimp burrito,entree,bueno_y_sano,N,9.95
+Grilled shrimp burrito,entree,bueno_y_sano,L,10.7
+Seitan or tofu burrito,entree,bueno_y_sano,N,8.88
+Seitan or tofu burrito,entree,bueno_y_sano,L,9.63
+Mixed grill burrito,entree,bueno_y_sano,N,8.18
+Mixed grill burrito,entree,bueno_y_sano,L,8.93
+Bean bowl,entree,bueno_y_sano,N,6.54
+Bean bowl,entree,bueno_y_sano,L,7.29
+"Bean bowl (chicken, steak or pulled pork)",entree,bueno_y_sano,N,7.94
+"Bean bowl (chicken, steak or pulled pork)",entree,bueno_y_sano,L,8.69
+Sautee spinach and garlic bowl,entree,bueno_y_sano,N,7.94
+Sautee spinach and garlic bowl,entree,bueno_y_sano,L,8.69
+Grilled shrimp bowl,entree,bueno_y_sano,N,9.95
+Grilled shrimp bowl,entree,bueno_y_sano,L,10.7
+Seitan or tofu bowl,entree,bueno_y_sano,N,8.88
+Seitan or tofu bowl,entree,bueno_y_sano,L,9.63
+Mixed grill bowl,entree,bueno_y_sano,N,8.18
+Mixed grill bowl,entree,bueno_y_sano,L,8.93
+Smoked brisket burrito,entree,bueno_y_sano,N,9.75
+Local beef chili burrito,entree,bueno_y_sano,N,8.75
+Thai burrito,entree,bueno_y_sano,N,8.41
+East/West burrito,entree,bueno_y_sano,N,8.41
+Salvadoran burrito,entree,bueno_y_sano,N,7
+Salvadoran burrito with chicken,entree,bueno_y_sano,N,8
+Chickpea and red curry burrito,entree,bueno_y_sano,N,7
+Chickpea and red curry burrito with chicken,entree,bueno_y_sano,N,8.75
+Chickpea and red curry burrito with spinach and garlic,entree,bueno_y_sano,N,8.75
+Breakfast burrito,entree,bueno_y_sano,N,7.76
+Breakfast burrito with bacon and extra cheese,entree,bueno_y_sano,N,9.51
+Tortilla chips with salsa,entree,bueno_y_sano,N,1.5
+Guacamole,entree,bueno_y_sano,N,1.75
+Grilled jalapeno (order of one),entree,bueno_y_sano,N,2
+Grilled jalapeno (order of three),entree,bueno_y_sano,N,4
+Bean taco,entree,bueno_y_sano,S,2.76
+"Chicken, steak, or pulled pork taco",entree,bueno_y_sano,S,3.74
+Sauteed spinach and garlic taco,entree,bueno_y_sano,S,3.74
+Seitan or tofu taco,entree,bueno_y_sano,S,4.25
+Kids’ bean and cheese taco,entree,bueno_y_sano,S,2.75
+Kids’ chicken and cheese taco,entree,bueno_y_sano,S,3.25
+Cheese quesadilla,entree,bueno_y_sano,N,7.71
+Cheese quesadilla,entree,bueno_y_sano,L,9.11
+"Chicken, steak, or pulled pork quesadilla",entree,bueno_y_sano,N,9.11
+"Chicken, steak, or pulled pork quesadilla",entree,bueno_y_sano,L,10.51
+Chicken and grilled red onion quesadilla,entree,bueno_y_sano,N,9.11
+Chicken and grilled red onion quesadilla,entree,bueno_y_sano,L,10.51
+Chicken and fresh spinach quesadilla,entree,bueno_y_sano,N,9.11
+Chicken and fresh spinach quesadilla,entree,bueno_y_sano,L,10.51
+Steak and mushroom quesadilla,entree,bueno_y_sano,N,9.11
+Steak and mushroom quesadilla,entree,bueno_y_sano,L,10.51
+Sauteed spinach and garlic quesadilla,entree,bueno_y_sano,N,9.11
+Sauteed spinach and garlic quesadilla,entree,bueno_y_sano,L,10.51
+Kids’ quesadilla,entree,bueno_y_sano,N,5
+Kids’ quesadilla,entree,bueno_y_sano,L,6.4
+Kids’ quesadilla with chicken,entree,bueno_y_sano,N,5.75
+Kids’ quesadilla with chicken,entree,bueno_y_sano,L,7.15
+Basic grilled salad,salad,bueno_y_sano,N,7.76
+"Basic salad with chicken, steak or pulled pork",salad,bueno_y_sano,N,9.58
+Basic salad with zucchini and portabello,salad,bueno_y_sano,N,9.58
+Basic salad with grilled shrimp,salad,bueno_y_sano,N,11.5
+Smoked brisket taco plate,entree,bueno_y_sano,N,9.75
+Chicken bacon ranch burrito,entree,bueno_y_sano,N,8.75
+Fish tacos (two),entree,bueno_y_sano,N,7.94
+Korean BBQ tacos (two),entree,bueno_y_sano,N,8.5
+Bottled water,beverage,bueno_y_sano,N,1.75
+Fountain soda,beverage,bueno_y_sano,N,1.86
+Orangina,beverage,bueno_y_sano,N,1.96
+Spindrift sparkling (can),beverage,bueno_y_sano,N,1.96
+Vitamin water,beverage,bueno_y_sano,N,2.57
+Nantucket nectar,beverage,bueno_y_sano,N,2.57
+Breaded shrimp,appetizer,pasta_basta,N,7.95
+Mushrooms alla focaccia,appetizer,pasta_basta,N,7.95
+Arancini,appetizer,pasta_basta,N,7.95
+Breaded cheese ravioli,appetizer,pasta_basta,N,6.95
+Mixed grilled vegetables,appetizer,pasta_basta,N,7.95
+Calamari frita,appetizer,pasta_basta,N,10.25
+Bruschetta,appetizer,pasta_basta,N,6.75
+Steamed mussels,appetizer,pasta_basta,N,9.95
+Sirloin strip alfredo,entree,pasta_basta,N,17.95
+Penne romacampo,entree,pasta_basta,N,17.95
+Scallop special,entree,pasta_basta,N,18.25
+Chicken piccata,entree,pasta_basta,N,17.95
+Sweet and spicy alfredo,entree,pasta_basta,N,17.5
+House salad,salad,pasta_basta,S,3.95
+House salad,salad,pasta_basta,L,5.5
+Caesar salad,salad,pasta_basta,S,4.5
+Caesar salad,salad,pasta_basta,L,6.95
+"Tomato, basil, mozzarella",salad,pasta_basta,N,7.75
+Pasta and fagioli,entree,pasta_basta,N,5.45
+Chicken tortellini,entree,pasta_basta,N,5.45
+Mixed grilled vegetables,entree,pasta_basta,N,13.95
+Chicken broccoli alfredo,entree,pasta_basta,N,14.5
+Penne marinara with meatballs,entree,pasta_basta,N,10.75
+Linguini with clams or mussels,entree,pasta_basta,N,15.95
+Chicken marsala,entree,pasta_basta,N,14.75
+Veal marsala,entree,pasta_basta,N,15.75
+Chicken beneciano,entree,pasta_basta,N,15.75
+Chicken verdiccio,entree,pasta_basta,N,15.75
+Lobster alla marre,entree,pasta_basta,N,16.45
+Frutta di marre,entree,pasta_basta,N,18.95
+Crazy alfredo,entree,pasta_basta,N,15.75
+Tomato basil mozzarella,entree,pasta_basta,N,13.25
+Spaghetti shrimp and broccoli,entree,pasta_basta,N,15.45
+Chicken parmesan,entree,pasta_basta,N,14.95
+Veal parmesan,entree,pasta_basta,N,14.95
+Shrimp skewers,entree,pasta_basta,S,12.25
+Shrimp skewers,entree,pasta_basta,L,13.25
+Salmon,entree,pasta_basta,S,13.95
+Salmon,entree,pasta_basta,L,14.95
+Rosemary chicken,entree,pasta_basta,S,11.95
+Rosemary chicken,entree,pasta_basta,L,12.95
+Sirloin strips,entree,pasta_basta,S,13.95
+Sirloin strips,entree,pasta_basta,L,14.75
+Eggplant parmesan,entree,pasta_basta,N,10.75
+Lasagna bolognese,entree,pasta_basta,N,10.75
+Spinach ricotta manicotti,entree,pasta_basta,N,10.75
+Vegetable lasagna,entree,pasta_basta,N,10.75
+Cheese pizza,entree,pasta_basta,S,9.95
+Cheese pizza,entree,pasta_basta,L,13.75
+Pepperoni pizza,entree,pasta_basta,S,10.96
+Pepperoni pizza,entree,pasta_basta,L,14.25
+Chicken brocoli alfredo pizza,entree,pasta_basta,S,14.95
+Chicken brocoli alfredo pizza,entree,pasta_basta,L,18.95
+Tomato basil mozzarella pizza,entree,pasta_basta,S,14.95
+Tomato basil mozzarella pizza,entree,pasta_basta,L,18.95
+Crazy alfredo,entree,pasta_basta,S,15.95
+Crazy alfredo,entree,pasta_basta,L,19.95
+Chicken parmesan,sandwich,pasta_basta,N,7.95
+Eggplant parmesan,sandwich,pasta_basta,N,7.95
+Sausage sub,sandwich,pasta_basta,N,7.95
+Meatball sub,sandwich,pasta_basta,N,7.95
+Steak and cheese,sandwich,pasta_basta,N,7.95
+Chicken sub,sandwich,pasta_basta,N,7.95
+Caprese sub,sandwich,pasta_basta,N,7.95
+Marinara sauce pasta,entree,pasta_basta,N,8.45
+Olive oil and garlic pasta,entree,pasta_basta,N,8.45
+Butter parmesan pasta,entree,pasta_basta,N,8.45
+Bolognese pasta,entree,pasta_basta,N,9.75
+Sorrentina pasta,entree,pasta_basta,N,9.75
+Putanesca pasta,entree,pasta_basta,N,9.75
+Matriciana pasta,entree,pasta_basta,N,9.75
+Pesto pasta,entree,pasta_basta,N,10.75
+Alfredo pasta,entree,pasta_basta,N,9.95
+Carbonara pasta,entree,pasta_basta,N,9.95
+Vodka tomato cream pasta,entree,pasta_basta,N,9.95
+Pesto cream pasta,entree,pasta_basta,N,9.95
+Tomato cream pasta,entree,pasta_basta,N,9.95
+Olive oil and garlic gnocchi,entree,pasta_basta,N,11.2
+Butter parmesan gnocchi,entree,pasta_basta,N,11.2
+Bolognese gnocchi,entree,pasta_basta,N,11.2
+Sorrentina gnocchi,entree,pasta_basta,N,12.5
+Putanesca gnocchi,entree,pasta_basta,N,12.5
+Matriciana gnocchi,entree,pasta_basta,N,12.5
+Pesto gnocchi,entree,pasta_basta,N,12.5
+Alfredo gnocchi,entree,pasta_basta,N,13.5
+Carbonara gnocchi,entree,pasta_basta,N,12.7
+Vodka tomato cream gnocchi,entree,pasta_basta,N,12.7
+Pesto cream gnocchi,entree,pasta_basta,N,12.7
+Tomato cream gnocchi,entree,pasta_basta,N,12.7
+Olive oil and garlic cheese tortellini,entree,pasta_basta,N,11.2
+Butter parmesan cheese tortellini,entree,pasta_basta,N,11.2
+Bolognese cheese tortellini,entree,pasta_basta,N,11.2
+Sorrentina cheese tortellini,entree,pasta_basta,N,12.5
+Putanesca cheese tortellini,entree,pasta_basta,N,12.5
+Matriciana cheese tortellini,entree,pasta_basta,N,12.5
+Pesto cheese tortellini,entree,pasta_basta,N,12.5
+Alfredo cheese tortellini,entree,pasta_basta,N,13.5
+Carbonara cheese tortellini,entree,pasta_basta,N,12.7
+Vodka tomato cream cheese tortellini,entree,pasta_basta,N,12.7
+Pesto cream cheese tortellini,entree,pasta_basta,N,12.7
+Tomato cream cheese tortellini,entree,pasta_basta,N,12.7
+"Olive oil and garlic ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,11.2
+"Butter parmesan ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,11.2
+"Bolognese ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,11.2
+"Sorrentina ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.5
+"Putanesca ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.5
+"Matriciana ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.5
+"Pesto ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.5
+"Alfredo ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,13.5
+"Carbonara ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.7
+"Vodka tomato cream ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.7
+"Pesto cream ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.7
+"Tomato cream ravioli (cheese, spinach or porcini)",entree,pasta_basta,N,12.7
+Olive oil and garlic lobster ravioli,entree,pasta_basta,N,12.4
+Butter parmesan lobster ravioli,entree,pasta_basta,N,12.4
+Bolognese lobster ravioli,entree,pasta_basta,N,12.4
+Sorrentina lobster ravioli,entree,pasta_basta,N,13.7
+Putanesca lobster ravioli,entree,pasta_basta,N,13.7
+Matriciana lobster ravioli,entree,pasta_basta,N,13.7
+Pesto lobster ravioli,entree,pasta_basta,N,13.7
+Alfredo lobster ravioli,entree,pasta_basta,N,14.7
+Carbonara lobster ravioli,entree,pasta_basta,N,13.9
+Vodka tomato cream lobster ravioli,entree,pasta_basta,N,13.9
+Pesto cream lobster ravioli,entree,pasta_basta,N,13.9
+Tomato cream lobster ravioli,entree,pasta_basta,N,13.9

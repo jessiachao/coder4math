@@ -1,0 +1,33 @@
+name,name_short,info_full,days,open,close,open_text,close_text,time,cash,credit_card,ucard,dining_dollars,ycmp,notes
+Tavola,tavola,"Our fresh, house made dough shines through at Tavola. Offering a variety of house made pizzas, hummus bowls, pasta, salads and more.",Mon-Fri,10:30 AM,7:00 PM,10:30:00,19:00:00,8.5,yes,yes,yes,yes,yes,
+People's Organic Coffee,people,"Located on the main concourse of the Campus Center, People’s Organic offers natural, organic, and sustainable foods. Choose from Salads, Paninis, Fresh Cookies, Locally Baked Pastries, and so much more. People’s Organic serves Fair Trade coffees and features a variety of specialty coffee beverages and organic teas.",Mon-Fri,7:00 AM,4:00 PM,7:00:00,16:00:00,9,yes,yes,yes,yes,yes,
+U-Pub,u_pub,"The UMass UPub is located on the concourse level of the Campus Center and welcomes guests ages 21+ to enjoy a game of pool, games on the big screen and outdoor seating. We’re open Monday-Friday and our pub food is served from 12pm-7pm. Bring a friend to experience a variety of small bites and craft beers!",Mon-Fri,11:00 AM,10:00 PM,11:00:00,22:00:00,11,yes,yes,yes,food only,,
+Harvest Market,harvest,"Harvest Fresh Market is a full service market serving healthy, sustainable and delicious fare for our on the go customers. Our hot bar features Indian, Asian, traditional American and many other world cuisines. Don’t miss our salad bar featuring freshly prepared composed salads using locally sourced in –season ingredients when available. Our bagels are freshly made every day from Yum! Bakery. Other highlights include Dannon yogurt bar, all natural and organic snacks, local cheeses and deli meats, grab-and-go salads and sandwiches, and a made-to-order juice and smoothie bar.",Mon-Sun,8:00 AM,11:00 PM,8:00:00,23:00:00,15,yes,yes,yes,yes,yes,"Monday - Thursday 8:00 AM - 11:00 PM
+Friday - Sunday 8:00 AM - 9:00 PM"
+Yum! Bakery,yum,"Yum! Bakery is a full service bakery located in the Blue Wall. Enjoy our homemade cookies, pastries, cakes, French macaroons as well as many seasonal treats.",Mon-Fri,10:30 AM,9:00 PM,10:30:00,21:00:00,10.5,yes,yes,yes,yes,yes,
+Green Fields,green_fields,"Choose from a variety of our, healthy, sustainable and delicious salad options, or create your own. All salads are hand tossed, and prepared fresh on sight with the best possible ingredients featuring many locally sourced items when available.",Mon-Fri,10:30 AM,7:00 PM,10:30:00,19:00:00,8.5,yes,yes,yes,yes,yes,"Monday - Thursday 10:30 AM - 7:00 PM
+Friday 10:30 AM - 3:00 PM"
+Tamales,tamales,"Delight in an authentic Mexican experience. Choose between a burrito, wrapped in a fresh house made tortilla, rice bowl, or salad featuring the freshest, most sustainable ingredients.",Mon-Sun,10:30 AM,9:00 PM,10:30:00,21:00:00,10.5,yes,yes,yes,yes,yes,"Monday - Friday 10:30 AM - 9:00 PM
+Saturday - Sunday 11:30 AM - 9:00 PM"
+Wasabi,wasabi,"Enjoy the freshest, most delicious sushi served in the northeast. Offering a variety of signature rolls, we only use sustainably harvested seafood. Also serving tepanyaki, donburi, miso soup and plenty more off our grill.",Mon-Fri,10:30 AM,7:00 PM,10:30:00,19:00:00,8.5,yes,yes,yes,yes,yes,"Monday - Thursday
+10:30 AM - 7:00 PM
+
+Friday
+10:30 AM - 3:00 PM"
+Deli Delish,deli_delish,"Choose between specialty grinders, rolls and hot sandwiches offered daily. Featuring fresh baked bread, the freshest, most sustainable ingredients, and house roasted turkey and roast beef.",Mon-Fri,10:30 AM,7:00 PM,10:30:00,19:00:00,8.5,yes,yes,yes,yes,yes,
+Star Ginger,star_ginger,"At Star Ginger we offer authentic Vietnamese, Thai, and other Asian specialties. Choose between a delicious pho noodle bowl, or a rice bowl with one of the many protein options, veggies, and side salad. Also try an authentic Bibimbap Korean rice bowl.",Mon-Sun,10:30 AM,9:00 PM,10:30:00,21:00:00,10.5,yes,yes,yes,yes,yes,"Monday - Friday
+10:30 AM - 9:00 PM
+
+Saturday - Sunday
+11:30 AM - 9:00 PM"
+The Grill,grill,"Enjoy a freshly prepared burger or grilled sandwich featuring Grass Fed Beef, or Plainville Farm All Natural Turkey. Indulge with a milkshake featuring local ice cream from Maple Valley Farm.",Mon-Sun,10:30 AM,9:00 PM,10:30:00,21:00:00,10.5,yes,yes,yes,yes,yes,"Monday - Friday
+10:30 AM - 9:00 PM
+
+Saturday - Sunday
+11:30 AM - 9:00 PM"
+Bamboo at Chef's Table,bamboo,Bamboo at Chef’s Table features daily specials freshly prepared by our award winning chefs. Make sure to come by daily as our menu is constantly being updated.,Mon-Fri,11:00 AM,7:00 PM,11:00:00,19:00:00,8,yes,yes,yes,yes,yes,"Monday - Thursday
+11:00 AM - 7:00 PM
+
+Friday
+11:00 AM - 3:00 PM"
+Paciugo,paciugo,"Indulge in traditionally crafted Italian Gelato. Using only the freshest fruits and all-natural ingredients, there’s plenty to love about this decadent dessert that is light and unbelievably smooth with 70% less fat than ice cream. Choose from a variety of flavors offered on a daily basis.",Mon-Fri,10:30 AM,9:00 PM,10:30:00,21:00:00,10.5,yes,yes,yes,yes,yes,
