@@ -187,7 +187,7 @@ install.packages("dplyr", repos='http://cran.us.r-project.org')
 
 gas <- read.csv("datasets/gas_stations.csv", header = TRUE, stringsAsFactors=FALSE)
 
-# options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
+options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
