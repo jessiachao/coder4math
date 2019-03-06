@@ -10,24 +10,13 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = TRUE)
-#install.packages("dplyr", repos='http://cran.us.r-project.org')
+install.packages("dplyr", repos='http://cran.us.r-project.org')
 
 gas <- read.csv("datasets/gas_stations.csv", header = TRUE, stringsAsFactors=FALSE)
 
-options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
+# options(tutorial.storage = filesystem_storage("/srv/shiny-server/tutorials/AAA_storage", compress = TRUE))
 ```
 
-## Introduction
-
-The world around us is filled with important, unanswered questions. What effect will rising sea levels have on the coastal regions of the United States? When will the world’s human population surpass 10 billion? How much will it cost to go to college in 10 years? 
-
-The only thing one can say with certainty is that any attempt to find a solution requires the use of mathematics, most likely through the creation, application, and refinement of mathematical models. A *mathematical model* is a representation of a system or scenario that is used to gain qualitative and/ or quantitative understanding of some real-world problems and to predict future behavior.
-
-Building a useful math model does not necessarily require advanced mathematics or significant expertise in any of the fields listed above. It does require a willingness to do some research, brainstorm, and jump right in and try something that may be out of your comfort zone. (Bliss, Fowler, & Galluzzo, 2014, p.3)
-
-Let's get started!
-
-In this activity, you will use mathematical modeling and R programming skills to build a model
 
 ## The Challenge
 
@@ -148,10 +137,8 @@ Below are some information about his car that may help you make the recommendati
 ## Report templates
 
 ## My solution and R script 
-Summary
-
-## Sample solutions
-```{r solution, exercise = T}
+```{r my-solution, exercise = TRUE, exercise.lines = 40}
 
 ```
+
 
