@@ -10,7 +10,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 knitr::opts_chunk$set(echo = TRUE)
-install.packages("dplyr", repos='http://cran.us.r-project.org')
+# install.packages("dplyr", repos='http://cran.us.r-project.org')
 
 gas <- read.csv("datasets/gas_stations.csv", header = TRUE, stringsAsFactors=FALSE)
 
